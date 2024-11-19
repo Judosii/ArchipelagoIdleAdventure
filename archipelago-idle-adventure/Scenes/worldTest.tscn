@@ -5,11 +5,12 @@
 
 [node name="World Test" type="Node2D"]
 
-[node name="character" parent="." instance=ExtResource("1_nogoq")]
+[node name="character" parent="." node_paths=PackedStringArray("travellingToNode") instance=ExtResource("1_nogoq")]
 position = Vector2(95, 260)
+travellingToNode = NodePath("../movementNode")
 
 [node name="movementNode" parent="." node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
-position = Vector2(297, 292)
+position = Vector2(206, 296)
 connectedNodes = [NodePath("../movementNode2")]
 nodeName = "1"
 
@@ -18,11 +19,42 @@ position = Vector2(419, 294)
 connectedNodes = [NodePath("../movementNode"), NodePath("../movementNode3")]
 nodeName = "1"
 
-[node name="movementNode3" parent="." instance=ExtResource("2_vulvb")]
+[node name="movementNode3" parent="." node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
 position = Vector2(432, 139)
+connectedNodes = [NodePath("../movementNode4"), NodePath("../movementNode2")]
 nodeName = "1"
 
 [node name="movementNode4" parent="." node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
-position = Vector2(554, 141)
-connectedNodes = [NodePath("../movementNode3"), NodePath(".")]
+position = Vector2(589, 62)
+connectedNodes = [NodePath("../movementNode3"), NodePath("../movementNode7")]
+nodeName = "1"
+
+[node name="movementNode5" parent="." node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+position = Vector2(592, 500)
+connectedNodes = [NodePath("../movementNode9"), NodePath("../movementNode6")]
+nodeName = "1"
+
+[node name="movementNode6" parent="." node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+position = Vector2(719, 440)
+connectedNodes = [NodePath("../movementNode5"), NodePath("../movementNode8")]
+nodeName = "1"
+
+[node name="movementNode7" parent="." node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+position = Vector2(765, 165)
+connectedNodes = [NodePath("../movementNode4"), NodePath("../movementNode8")]
+nodeName = "1"
+
+[node name="movementNode8" parent="." node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+position = Vector2(822, 302)
+connectedNodes = [NodePath("../movementNode7"), NodePath("../movementNode6"), NodePath("../movementNode10")]
+nodeName = "1"
+
+[node name="movementNode9" parent="." node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+position = Vector2(464, 423)
+connectedNodes = [NodePath("../movementNode2"), NodePath("../movementNode5")]
+nodeName = "1"
+
+[node name="movementNode10" parent="." node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+position = Vector2(1003, 294)
+connectedNodes = [NodePath("../movementNode8")]
 nodeName = "1"

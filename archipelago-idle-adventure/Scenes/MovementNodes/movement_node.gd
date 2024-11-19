@@ -1,4 +1,4 @@
-class_name MovementNode extends Node2D
+extends Node2D
 
 @export var connectedNodes : Array[Node2D]
 

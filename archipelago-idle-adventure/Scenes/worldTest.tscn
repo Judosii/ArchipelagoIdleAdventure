@@ -8,18 +8,21 @@
 [node name="character" parent="." instance=ExtResource("1_nogoq")]
 position = Vector2(95, 260)
 
-[node name="movementNode" parent="." instance=ExtResource("2_vulvb")]
+[node name="movementNode" parent="." node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
 position = Vector2(297, 292)
+connectedNodes = [NodePath("../movementNode2")]
 nodeName = "1"
 
-[node name="movementNode2" parent="." instance=ExtResource("2_vulvb")]
+[node name="movementNode2" parent="." node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
 position = Vector2(419, 294)
+connectedNodes = [NodePath("../movementNode"), NodePath("../movementNode3")]
 nodeName = "1"
 
 [node name="movementNode3" parent="." instance=ExtResource("2_vulvb")]
 position = Vector2(432, 139)
 nodeName = "1"
 
-[node name="movementNode4" parent="." instance=ExtResource("2_vulvb")]
+[node name="movementNode4" parent="." node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
 position = Vector2(554, 141)
+connectedNodes = [NodePath("../movementNode3"), NodePath(".")]
 nodeName = "1"

@@ -18,6 +18,8 @@ func _physics_process(delta):
 
 func DecideNextNode():
 	get_node("Label").text = str("final next node is :",chosenUnexploredNode,"\n immediate next node is : ", travellingToNode )
+	var immediateNodes : Array[Node2D]
+	
 
 func HasReachedNode(arrivedAtNode: Node2D):
 	var newNodes : Array[Node2D]

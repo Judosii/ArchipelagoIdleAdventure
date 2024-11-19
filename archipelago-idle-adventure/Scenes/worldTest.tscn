@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://caq6wv4esmdq0"]
+
+[ext_resource type="PackedScene" uid="uid://nxm1ex3c8es2" path="res://Scenes/Entities/Player/IdleCharacter.tscn" id="1_nogoq"]
+[ext_resource type="PackedScene" uid="uid://bor6yb66lbydm" path="res://Scenes/MovementNodes/movementNode.tscn" id="2_vulvb"]
+
+[node name="World Test" type="Node2D"]
+
+[node name="character" parent="." instance=ExtResource("1_nogoq")]
+position = Vector2(95, 260)
+
+[node name="movementNode" parent="." instance=ExtResource("2_vulvb")]
+position = Vector2(297, 292)
+nodeName = "1"
+
+[node name="movementNode2" parent="." instance=ExtResource("2_vulvb")]
+position = Vector2(419, 294)
+nodeName = "1"
+
+[node name="movementNode3" parent="." instance=ExtResource("2_vulvb")]
+position = Vector2(432, 139)
+nodeName = "1"
+
+[node name="movementNode4" parent="." instance=ExtResource("2_vulvb")]
+position = Vector2(554, 141)
+nodeName = "1"

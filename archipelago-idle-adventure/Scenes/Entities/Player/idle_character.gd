@@ -3,7 +3,8 @@ extends CharacterBody2D
 const SPEED = 100
 const JUMP_VELOCITY = -400.0
 
-var aStar2D : AStar2D 
+@export var startNode : MovementNodes
+
 @export var travellingToNode : Node2D #node the character is going towards
 var nodesThatCanBeExplored : Array[Node2D] # Backlog of all nodes to explore
 var nodesThatHaveBeenExplored : Array[Node2D] # Nodes that have been explored
@@ -15,7 +16,6 @@ var nodesUnexplored : Array[Node2D] # Remainder of what to explore
 # nodesUnexplored will be used when a character reaches a dead end, to determine where to go next.
 
 func _ready() -> void:
-	aStar2D = AStar2D.new()
 	nodesThatCanBeExplored.append(travellingToNode)
 
 func _physics_process(delta):
@@ -64,11 +64,10 @@ func IsCurrentNodeDeadEnd() -> bool:
 
 func ChooseNextNodeToTravelTo():
 	var shortestDistance : float
-	var closestNode : Node2D
 	for i in nodesUnexplored.size():
 		if i == 0:
 			shortestDistance = position.distance_to(nodesUnexplored[i].position)
-			closestNode = nodesUnexplored[i]
+			travellingToNode = nodesUnexplored[i]
 		elif position.distance_to(nodesUnexplored[i].position) < shortestDistance:
 			shortestDistance = position.distance_to(nodesUnexplored[i].position)
 			print("new shortest distance : ", shortestDistance)

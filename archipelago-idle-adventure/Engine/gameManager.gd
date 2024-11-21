@@ -9,14 +9,15 @@ var nodesUnexplored : Array[MovementNodes] # Remainder of what to explore
 var aStar2D : AStar2D = AStar2D.new()
 var hintLocations : Array[MovementNodes]
 
-func PlayerReady(startNode : MovementNodes):
+func PlayerReady(startNode : MovementNodes, characterNode : CharacterBody2D):
+	character = characterNode
 	nodesThatCanBeExplored.append(startNode)
 	nodesUnexplored.append(startNode)
 	aStar2D.add_point(0, startNode.global_position)
 	ShowArraysOnLabels()
 
 func HasCurrentNodeBeenExplored(gotToNode : MovementNodes) -> bool:
-	print(gotToNode in nodesThatHaveBeenExplored)
+	#print(gotToNode in nodesThatHaveBeenExplored)
 	return gotToNode in nodesThatHaveBeenExplored
 
 func RefreshLists(arrivedToNode : MovementNodes):
@@ -25,6 +26,7 @@ func RefreshLists(arrivedToNode : MovementNodes):
 	var possibleNewNodes : Array[MovementNodes] = arrivedToNode.connectedNodes
 	# Get all connections of the node
 	for i in possibleNewNodes.size():
+		#print("---\n checking possible new node : ", arrivedToNode.connectedNodes[i], "\n ---")
 		# For all the connections it has...
 		if nodesThatCanBeExplored.has(possibleNewNodes[i]) == false:
 			# If it's not one that's already known of :
@@ -49,17 +51,17 @@ func ReturnEntryFromList(what : MovementNodes,list : Array = nodesThatCanBeExplo
 
 func AddtoAStar(id_arrivedAt : int, id_foundNode:int, pos_foundNode: Vector2):
 	 #feed IDs from nodesThatCanBeExplored, so that the ID stays consistent.
-	print("\nAddToStar : ")
-	print("-arrived at : ", id_arrivedAt, " ( is: ", nodesThatHaveBeenExplored[id_arrivedAt].name, " )")
+	#print("\nAddToStar : ")
+	#print("-arrived at : ", id_arrivedAt, " ( is: ", nodesThatHaveBeenExplored[id_arrivedAt].name, " )")
 	#print("-foundNode : ", id_foundNode, " ( is: ", nodesThatHaveBeenExplored[id_foundNode].name, " )")
 	#print("-positionNode : ", pos_foundNode, " ( is: ", pos_foundNode, " )")
 	#print("\n-foundNode : ", id_foundNode, "\n-nodeposition : ", pos_foundNode))
 	
-	print("added", id_foundNode, " to astar")
+	#print("added", id_foundNode, " to astar")
 	aStar2D.add_point(id_foundNode, pos_foundNode)
 	aStar2D.connect_points(id_arrivedAt, id_foundNode)
 	
-	print("AStar's point count is : ",aStar2D.get_point_count(), "\n")
+	#print("AStar's point count is : ",aStar2D.get_point_count(), "\n")
 
 func RequestPath(startNode: MovementNodes, endNode: MovementNodes) -> Array[MovementNodes]:
 	var idStartNode : int = nodesThatCanBeExplored.find(startNode)
@@ -93,9 +95,13 @@ func ObtainedItem():
 	pass
 
 func IsGoMode():
+	#checks if the character can go finish the game
 	pass
 
 func CheckPreviouslyUnavailablePaths():
+	#Character has reached a dead end, or a path that is blocked for now.
+	#return a path that he can reach currently.
+	#if null, he waits until item is obtained to unlock him.
 	pass
 
 func ShowArraysOnLabels():
@@ -120,3 +126,12 @@ func ShowArraysOnLabels():
 		var label = Label.new()
 		get_node("HBoxContainer/nodesUnexplored").add_child(label)
 		label.text = str("unexplored : " + nodesUnexplored[i].name + "||")
+
+func GetClosestUnexploredNode() -> MovementNodes:
+	var currentNodeChosen : MovementNodes = nodesUnexplored[0]
+	var currentNodeDistance : float = character.global_position.distance_to(nodesUnexplored[0].global_position)
+	for i in nodesUnexplored.size():
+		if character.global_position.distance_to(nodesUnexplored[i].global_position) < currentNodeDistance:
+			currentNodeChosen = nodesUnexplored[i]
+			currentNodeDistance = character.global_position.distance_to(nodesUnexplored[i].global_position)
+	return currentNodeChosen

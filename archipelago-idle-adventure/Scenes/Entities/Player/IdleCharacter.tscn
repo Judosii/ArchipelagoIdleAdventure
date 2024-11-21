@@ -23,4 +23,5 @@ offset_right = 40.0
 offset_bottom = -19.0
 
 [node name="Line2D" type="Line2D" parent="."]
+visible = false
 width = 3.0

@@ -29,6 +29,7 @@ func _physics_process(delta):
 
 func ArrivedAtNode():
 	print("-----------------------------------------------------------")
+	print("Arrived at a node !")
 	velocity = Vector2(0,0)
 	#print(GAMEMANAGER.HasCurrentNodeBeenExplored(travellingToNode))
 	if !GAMEMANAGER.HasCurrentNodeBeenExplored(travellingToNode):
@@ -44,8 +45,6 @@ func ArrivedAtNode():
 	elif NodeIsBranchingPath():
 		print("-> there are multiple paths ahead !")
 		travellingToNode = GAMEMANAGER.GetClosestUnexploredNode()
-		#set_physics_process(false)
-		pass
 	elif IsCurrentNodeNotADeadEnd() :
 		print("-> current node is not a dead end ! \n")
 		travellingToNode = GAMEMANAGER.GetClosestUnexploredNode()

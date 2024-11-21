@@ -18,8 +18,9 @@ visible = false
 shape = SubResource("RectangleShape2D_2101c")
 
 [node name="Label" type="Label" parent="."]
+offset_top = -47.0
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = -19.0
 
 [node name="Line2D" type="Line2D" parent="."]
 width = 3.0

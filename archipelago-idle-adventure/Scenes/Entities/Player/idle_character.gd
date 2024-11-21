@@ -14,39 +14,72 @@ var currentObjectiveNode : MovementNodes
 # ... add its connections to nodesThatCanBeExplored if they haven't been there already.
 # nodesUnexplored will be used when a character reaches a dead end, to determine where to go next.
 
+func _ready():
+	GAMEMANAGER.PlayerReady(startNode)
 
 func _physics_process(delta):
+	var label : Label = get_node("Label")
+	label.text = travellingToNode.name
 	var line : Line2D = get_node("Line2D")
 	line.clear_points() 
-	#velocity.x = move_toward(velocity.x, 0, SPEED)
 	if position.distance_to(travellingToNode.position) < 1 :
-		# arrived at node
-		velocity = Vector2(0,0)
-		if GAMEMANAGER.HasCurrentNodehasBeenExplored(travellingToNode):
-			# Node has NOT been explored before
-			#print("travellingToNode not in nodesThatHaveBeenExplored")
-			GAMEMANAGER.RefreshLists(travellingToNode)
-		ChooseNextNodeToTravelTo()
-	
+		ArrivedAtNode()
 	else:
-		# Travelling to next node
-		var toBeVel : Vector2
-		toBeVel = (travellingToNode.position - position).normalized() * SPEED
-		velocity = toBeVel
-		line.add_point(Vector2(0,0))
-		line.add_point(Vector2(toBeVel * 100))
-		move_and_slide()
+		TravellingToNode(line)
+
+func ArrivedAtNode():
+	velocity = Vector2(0,0)
+	print(GAMEMANAGER.HasCurrentNodeBeenExplored(travellingToNode))
+	if !GAMEMANAGER.HasCurrentNodeBeenExplored(travellingToNode):
+		# Node has been explored before
+		GAMEMANAGER.RefreshLists(travellingToNode)
+	if GAMEMANAGER.IsHintAvailable():
+		#Is there a hint available to access ?
+		pass
+	elif !IsCurrentNodeDeadEnd() :
+		print("-> current node is not a dead end ! \n")
+		# Path is not a dead end, get next closest path
+	elif HasObtainedItem():
+		print("-> has, in fact, obtained item !")
+		# Recalculate open paths
+		# Also check for Go Mode
+		if GAMEMANAGER.IsGoMode():
+			set_physics_process(false)
+		elif GAMEMANAGER.CheckPreviouslyUnavailablePaths():
+			set_physics_process(false)
+		else:
+			set_physics_process(false)
+			#Needs to wait for an item.
+	elif GAMEMANAGER.nodesUnexplored.size() > 0:
+		# is at least 1 path explorable ?
+		set_physics_process(false)
+	
+	#ChooseNextNodeToTravelTo()
+
+func TravellingToNode(line : Line2D):
+	var toBeVel : Vector2
+	toBeVel = (travellingToNode.position - position).normalized() * SPEED
+	velocity = toBeVel
+	line.add_point(Vector2(0,0))
+	line.add_point(Vector2(travellingToNode.global_position))
+	move_and_slide()
 
 func IsCurrentNodeDeadEnd() -> bool:
-	print("node's connections amount to : ",travellingToNode.connectedNodes.size())
+	print("\nIs current node dead end ?")
+	print("- node's connections amount to : ",travellingToNode.connectedNodes.size())
 	if travellingToNode.connectedNodes.size() == 1:
-		return true
+		if travellingToNode.connectedNodes[0] in GAMEMANAGER.nodesThatHaveBeenExplored:
+			print("-> connection has been explored. Would loop. Finding new path. ")
+			return true
+		else:
+			travellingToNode = travellingToNode.connectedNodes[0]
+			print("-> connection has not been explored. Continuing.")
+			return false
 	else:
-		return false
+		print("-> this is not a dead end.")
+		return true
 
 func ChooseNextNodeToTravelTo():
-	if travellingToNode.connectedNodes.size() == 1 || travellingToNode.connectedNodes.size() == 2:
-		pass
 	var shortestDistance : float
 	# following needs to be redone
 	#for i in nodesUnexplored.size():
@@ -57,3 +90,8 @@ func ChooseNextNodeToTravelTo():
 			#shortestDistance = position.distance_to(nodesUnexplored[i].position)
 			#print("new shortest distance : ", shortestDistance)
 			#travellingToNode = nodesUnexplored[i]
+
+func HasObtainedItem() -> bool:
+	# if an item has been obtained, 
+	# recalculate open paths after
+	return false

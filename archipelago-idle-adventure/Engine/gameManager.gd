@@ -6,6 +6,10 @@ var nodesThatHaveBeenExplored : Array[MovementNodes] # Nodes that have been expl
 var nodesUnexplored : Array[MovementNodes] # Remainder of what to explore
 var aStar2D : AStar2D 
 
+func HasCurrentNodehasBeenExplored(gotToNode : MovementNodes) -> bool:
+	print(gotToNode not in nodesThatHaveBeenExplored)
+	return gotToNode not in nodesThatHaveBeenExplored
+
 func RefreshLists(arrivedToNode : MovementNodes):
 	nodesThatHaveBeenExplored.append(arrivedToNode)
 	# just arrived at node, it has now been explored.
@@ -20,10 +24,9 @@ func RefreshLists(arrivedToNode : MovementNodes):
 			AddtoAStar(ReturnEntryFromList(arrivedToNode),ReturnEntryFromList(possibleNewNodes[i]),possibleNewNodes[i].position)
 			#Add to the AStar path finding the new node, and its position, as well as connect it
 			# Give the arrivedToNode to say what it is connected to
-
+	
 	nodesUnexplored.clear()
 	for i in nodesThatCanBeExplored.size():
-		#for o in nodesThatHaveBeenExplored:
 		if nodesThatHaveBeenExplored.has(nodesThatCanBeExplored[i]) == false:
 			nodesUnexplored.append(nodesThatCanBeExplored[i])
 

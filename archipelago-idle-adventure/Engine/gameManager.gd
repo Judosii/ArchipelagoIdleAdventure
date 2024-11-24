@@ -33,6 +33,8 @@ func RefreshLists(arrivedToNode : MovementNodes):
 			nodesThatCanBeExplored.append(possibleNewNodes[i])
 			# Add to the list of nodes to be potentially visited
 			AddtoAStar(ReturnEntryFromList(arrivedToNode),ReturnEntryFromList(possibleNewNodes[i]),possibleNewNodes[i].position)
+			
+			print("Astart list is : ", aStar2D.get_available_point_id())
 			#Add to the AStar path finding the new node, and its position, as well as connect it
 			# Give the arrivedToNode to say what it is connected to
 	
@@ -50,7 +52,7 @@ func ReturnEntryFromList(what : MovementNodes,list : Array = nodesThatCanBeExplo
 		return -1
 
 func AddtoAStar(id_arrivedAt : int, id_foundNode:int, pos_foundNode: Vector2):
-	 #feed IDs from nodesThatCanBeExplored, so that the ID stays consistent.
+	#feed IDs from nodesThatCanBeExplored, so that the ID stays consistent.
 	#print("\nAddToStar : ")
 	#print("-arrived at : ", id_arrivedAt, " ( is: ", nodesThatHaveBeenExplored[id_arrivedAt].name, " )")
 	#print("-foundNode : ", id_foundNode, " ( is: ", nodesThatHaveBeenExplored[id_foundNode].name, " )")
@@ -59,14 +61,22 @@ func AddtoAStar(id_arrivedAt : int, id_foundNode:int, pos_foundNode: Vector2):
 	
 	#print("added", id_foundNode, " to astar")
 	aStar2D.add_point(id_foundNode, pos_foundNode)
-	aStar2D.connect_points(id_arrivedAt, id_foundNode)
+	aStar2D.connect_points(id_arrivedAt, id_foundNode, true)
 	
 	#print("AStar's point count is : ",aStar2D.get_point_count(), "\n")
 
 func RequestPath(startNode: MovementNodes, endNode: MovementNodes) -> Array[MovementNodes]:
 	var idStartNode : int = nodesThatCanBeExplored.find(startNode)
 	var idEndNode : int = nodesThatCanBeExplored.find(endNode)
-	return aStar2D.get_point_path(idStartNode, idEndNode)
+	var pathInVec2 := aStar2D.get_point_path(idStartNode, idEndNode)
+	var pathInMovementNodes : Array[MovementNodes]
+	for i in pathInVec2.size():
+		var nodeposition : Vector2 = pathInVec2[i]
+		for n in nodesThatCanBeExplored.size():
+			if nodeposition == nodesThatCanBeExplored[n].position:
+				pathInMovementNodes.append(nodesThatCanBeExplored[n])
+	#print(pathInMovementNodes)
+	return pathInMovementNodes
 
 func IsHintAvailable() -> MovementNodes:
 	#Returns closest available hint

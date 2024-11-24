@@ -6,7 +6,8 @@ const JUMP_VELOCITY = -400.0
 @export var startNode : MovementNodes
 
 @export var travellingToNode : MovementNodes #node the character is going towards
-var currentObjectiveNode : MovementNodes
+var currentObjectiveNode : MovementNodes = null
+var nodePathToObjective : Array[MovementNodes]
 # do set them at start to avoid a crash :D
 
 # by design travellingToNode can only be a node that has been in nodesThatCanBeExplored
@@ -28,6 +29,8 @@ func _physics_process(delta):
 		TravellingToNode(line)
 
 func ArrivedAtNode():
+	if nodePathToObjective.size() > 0:
+		get_node("Label").text = str(nodePathToObjective[0].name)
 	print("-----------------------------------------------------------")
 	print("Arrived at a node !")
 	velocity = Vector2(0,0)
@@ -41,31 +44,49 @@ func ArrivedAtNode():
 	if GAMEMANAGER.IsHintAvailable():
 		print("-> hinted location available to obtain !")
 		#Is there a hint available to access ?
-		pass
-	elif NodeIsBranchingPath():
-		print("-> there are multiple paths ahead !")
-		travellingToNode = GAMEMANAGER.GetClosestUnexploredNode()
-	elif IsCurrentNodeNotADeadEnd() :
-		print("-> current node is not a dead end ! \n")
-		travellingToNode = GAMEMANAGER.GetClosestUnexploredNode()
-		# Path is not a dead end, get next closest path
-	elif HasObtainedItem():
-		print("-> has, in fact, obtained item !\n")
-		# Recalculate open paths
-		# Also check for Go Mode
-		if GAMEMANAGER.IsGoMode():
-			set_physics_process(false)
-		elif GAMEMANAGER.CheckPreviouslyUnavailablePaths():
-			set_physics_process(false)
-		else:
-			set_physics_process(false)
-			#Needs to wait for an item.
-	elif GAMEMANAGER.nodesUnexplored.size() > 0:
-		print("\nthere are currently ", GAMEMANAGER.nodesUnexplored.size(), " paths unexplored \n")
-		# is at least 1 path explorable ?
-		set_physics_process(false)
 	
-	#ChooseNextNodeToTravelTo()
+	if currentObjectiveNode != null && travellingToNode == nodePathToObjective[nodePathToObjective.size() -1]:
+		print("Arrived at objective ! \nStart exploring randomly again.")
+		currentObjectiveNode = null
+		nodePathToObjective.clear()
+	elif currentObjectiveNode != null :
+		print("character has an objective ! the objective is :", currentObjectiveNode.name)
+		nodePathToObjective.remove_at(0)
+		travellingToNode = nodePathToObjective[0]
+		return
+	
+	if currentObjectiveNode == null:
+		if NodeIsBranchingPath():
+			print("-> there are multiple paths ahead !")
+			travellingToNode = GAMEMANAGER.GetClosestUnexploredNode()
+		elif IsCurrentNodeNotADeadEnd() :
+			print("-> current node is not a dead end ! \n")
+			travellingToNode = GAMEMANAGER.GetClosestUnexploredNode()
+			# Path is not a dead end, get next closest path
+		elif HasObtainedItem():
+			print("-> has, in fact, obtained item !\n")
+			# Recalculate open paths
+			# Also check for Go Mode
+			if GAMEMANAGER.IsGoMode():
+				print("character is go mode !")
+				set_physics_process(false)
+			elif GAMEMANAGER.CheckPreviouslyUnavailablePaths():
+				print("not go mode yet, checking a new path")
+				set_physics_process(false)
+			else:
+				print("need to wait for an item.")
+				set_physics_process(false)
+				#Needs to wait for an item.
+		elif GAMEMANAGER.nodesUnexplored.size() > 0:
+			print("\nthere are currently ", GAMEMANAGER.nodesUnexplored.size(), " paths unexplored \n")
+			var closest = GAMEMANAGER.GetClosestUnexploredNode()
+			nodePathToObjective = GAMEMANAGER.RequestPath(travellingToNode,closest)
+			currentObjectiveNode = nodePathToObjective[0]
+			# is at least 1 path explorable ?
+		else:
+			pass
+			print("\nthere are no longer any paths to go to. You are boned.")
+			set_physics_process(false)
 
 func TravellingToNode(line : Line2D):
 	var toBeVel : Vector2
@@ -108,7 +129,6 @@ func IsCurrentNodeNotADeadEnd() -> bool:
 		print("there are ", connectionsExplored, "explored paths from this node")
 		if connectionsExplored == travellingToNode.connectedNodes.size():
 			print("-> all current connections have already been explored.")
-			print("-> choose unexplored node instead ?")
 			return false
 		else:
 			print("One path is still unexplored from this node.")

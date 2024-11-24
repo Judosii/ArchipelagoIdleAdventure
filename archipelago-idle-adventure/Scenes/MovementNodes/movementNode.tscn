@@ -13,3 +13,7 @@ texture = ExtResource("2_a3omm")
 [node name="Label" type="Label" parent="."]
 offset_top = -32.0
 offset_right = 40.0
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0)
+width = 1.0

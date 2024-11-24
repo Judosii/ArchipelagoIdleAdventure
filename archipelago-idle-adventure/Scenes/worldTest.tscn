@@ -21,12 +21,12 @@ connectedNodes = [NodePath("../movementNode"), NodePath("../movementNode3"), Nod
 nodeName = "1"
 
 [node name="movementNode3" parent="." node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
-position = Vector2(432, 139)
+position = Vector2(528, 97)
 connectedNodes = [NodePath("../movementNode4"), NodePath("../movementNode2")]
 nodeName = "1"
 
 [node name="movementNode4" parent="." node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
-position = Vector2(589, 62)
+position = Vector2(661, 65)
 connectedNodes = [NodePath("../movementNode3"), NodePath("../movementNode7")]
 nodeName = "1"
 

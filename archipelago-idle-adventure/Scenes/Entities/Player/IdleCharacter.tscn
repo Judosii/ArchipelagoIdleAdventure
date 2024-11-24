@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://nxm1ex3c8es2"]
+[gd_scene load_steps=10 format=3 uid="uid://nxm1ex3c8es2"]
 
 [ext_resource type="Texture2D" uid="uid://cxr178o2e1hrb" path="res://icon.svg" id="1_o27eo"]
 [ext_resource type="Script" path="res://Scenes/Entities/Player/idle_character.gd" id="1_snurf"]
 [ext_resource type="Script" path="res://Scenes/Entities/Player/StateMachine.gd" id="3_q16un"]
 [ext_resource type="Script" path="res://Scenes/Entities/Player/_stateIdle.gd" id="4_02oqc"]
+[ext_resource type="Script" path="res://Scenes/Entities/Player/_stateExplore.gd" id="5_ks5hn"]
+[ext_resource type="Script" path="res://Scenes/Entities/Player/_stateGoToClosestUnexplored.gd" id="6_v4ctx"]
+[ext_resource type="Script" path="res://Scenes/Entities/Player/_stateGoToHint.gd" id="7_r0dnp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2101c"]
 size = Vector2(38, 38)
@@ -11,8 +14,9 @@ size = Vector2(38, 38)
 [sub_resource type="LabelSettings" id="LabelSettings_6xxho"]
 font_color = Color(0, 0, 0, 1)
 
-[node name="character" type="CharacterBody2D"]
+[node name="character" type="CharacterBody2D" node_paths=PackedStringArray("_stateMachine")]
 script = ExtResource("1_snurf")
+_stateMachine = NodePath("States")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
@@ -28,12 +32,19 @@ offset_right = 40.0
 offset_bottom = -19.0
 label_settings = SubResource("LabelSettings_6xxho")
 
-[node name="Line2D" type="Line2D" parent="."]
-visible = false
-width = 3.0
-
-[node name="States" type="Node2D" parent="."]
+[node name="States" type="Node2D" parent="." node_paths=PackedStringArray("startingState")]
 script = ExtResource("3_q16un")
+startingState = NodePath("Idle")
 
 [node name="Idle" type="Node2D" parent="States"]
 script = ExtResource("4_02oqc")
+
+[node name="Explore" type="Node2D" parent="States" node_paths=PackedStringArray("stateGoToHint")]
+script = ExtResource("5_ks5hn")
+stateGoToHint = NodePath("../GoToHint")
+
+[node name="GoToClosestUnexplored" type="Node2D" parent="States"]
+script = ExtResource("6_v4ctx")
+
+[node name="GoToHint" type="Node2D" parent="States"]
+script = ExtResource("7_r0dnp")

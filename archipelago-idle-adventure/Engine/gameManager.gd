@@ -1,5 +1,7 @@
 class_name GameManager extends Node2D
 
+signal ItemReceived
+
 var character : CharacterBody2D
 
 # the player will send info about all nodes he encounters. They will be stored in these arrays :

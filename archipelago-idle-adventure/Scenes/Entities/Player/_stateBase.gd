@@ -1,7 +1,11 @@
 class_name _State extends Node2D
 
-var character : CharacterBody2D = get_parent().get_parent()
-var stateMachine : StateMachine = get_parent()
+var playerCharacter : character
+var stateMachine : StateMachine
+
+func _ready() -> void:
+	stateMachine = get_parent()
+	playerCharacter = stateMachine.get_parent()
 
 func StateFunctionality():
 	pass

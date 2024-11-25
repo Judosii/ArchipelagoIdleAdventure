@@ -1,7 +1,10 @@
-extends CharacterBody2D
+class_name character extends CharacterBody2D
+
+signal characterArrivedAtNode
 
 const SPEED = 100
 const JUMP_VELOCITY = -400.0
+
 
 @export var _stateMachine : StateMachine
 
@@ -19,15 +22,16 @@ var nodePathToObjective : Array[MovementNodes]
 func _ready():
 	GAMEMANAGER.PlayerReady(startNode, self)
 
-func _physics_process(delta):
-	var label : Label = get_node("Label")
-	label.text = travellingToNode.name
-	var line : Line2D = get_node("Line2D")
-	line.clear_points() 
-	if position.distance_to(travellingToNode.position) < 1 :
-		ArrivedAtNode()
-	else:
-		TravellingToNode(line)
+func _physics_process(delta: float) -> void:
+	_stateMachine.StateFunction(delta)
+
+#func _physics_process(delta):
+	#var label : Label = get_node("Label")
+	#label.text = travellingToNode.name
+	#if position.distance_to(travellingToNode.position) < 1 :
+		#ArrivedAtNode()
+	#else:
+		#TravellingToNode()
 
 func ArrivedAtNode():
 	if nodePathToObjective.size() > 0:
@@ -89,12 +93,10 @@ func ArrivedAtNode():
 			print("\nthere are no longer any paths to go to. You are boned.")
 			set_physics_process(false)
 
-func TravellingToNode(line : Line2D):
+func TravellingToNode():
 	var toBeVel : Vector2
 	toBeVel = (travellingToNode.global_position - global_position).normalized() * SPEED
 	velocity = toBeVel
-	line.add_point(Vector2(0,0))
-	line.add_point(Vector2(toBeVel))
 	move_and_slide()
 
 func NodeIsBranchingPath() -> bool:

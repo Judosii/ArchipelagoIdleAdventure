@@ -6,6 +6,10 @@ var currentObjectiveNode : MovementNodes
 
 @export var stateGoToHint : _State
 
+func _ready() -> void:
+	super._ready()
+	travellingToNode = playerCharacter.startNode
+
 func ArrivedAtNode():
 	character.velocity = Vector2(0,0)
 	#print(GAMEMANAGER.HasCurrentNodeBeenExplored(travellingToNode))
@@ -47,11 +51,11 @@ func ArrivedAtNode():
 			print("\nthere are no longer any paths to go to. You are boned.")
 			set_physics_process(false)
 
-func TravellingToNode(line : Line2D):
+func TravellingToNode():
 	var toBeVel : Vector2
-	toBeVel = (travellingToNode.global_position - global_position).normalized() * character.SPEED
-	character.velocity = toBeVel
-	character.move_and_slide()
+	toBeVel = (travellingToNode.global_position - playerCharacter.global_position).normalized() * playerCharacter.SPEED
+	playerCharacter.velocity = toBeVel
+	playerCharacter.move_and_slide()
 
 func NodeIsBranchingPath() -> bool:
 	print("\n is current node branching into paths ?")
@@ -93,3 +97,14 @@ func IsCurrentNodeNotADeadEnd() -> bool:
 	else:
 		print("reached end of IsCurrentNodeADeadEnd. Something's wrong.")
 		return true
+
+func StateFunctionality():
+	TravellingToNode()
+
+func ActivateState():
+	super.ActivateState()
+	playerCharacter.connect("characterArrivedAtNode", ArrivedAtNode)
+
+func DeactivateState():
+	super.DeactivateState()
+	playerCharacter.disconnect("characterArrivedAtNode", ArrivedAtNode)

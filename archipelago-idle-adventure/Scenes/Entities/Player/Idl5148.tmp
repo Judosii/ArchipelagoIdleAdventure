@@ -42,7 +42,7 @@ label_settings = SubResource("LabelSettings_6xxho")
 
 [node name="States" type="Node2D" parent="." node_paths=PackedStringArray("startingState")]
 script = ExtResource("3_q16un")
-startingState = NodePath("Explore")
+startingState = NodePath("Idle")
 
 [node name="Idle" type="Node2D" parent="States"]
 script = ExtResource("4_02oqc")

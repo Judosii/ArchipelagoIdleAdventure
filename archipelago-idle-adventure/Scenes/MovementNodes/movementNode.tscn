@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bor6yb66lbydm"]
+[gd_scene load_steps=4 format=3 uid="uid://bor6yb66lbydm"]
 
 [ext_resource type="Script" path="res://Scenes/MovementNodes/movement_node.gd" id="1_ttbey"]
 [ext_resource type="Texture2D" uid="uid://pjpfadgki0l" path="res://Scenes/MovementNodes/diamondShape.png" id="2_a3omm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d81u3"]
+radius = 15.0
 
 [node name="movementNode" type="Node2D"]
 script = ExtResource("1_ttbey")
@@ -17,3 +20,10 @@ offset_right = 40.0
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0)
 width = 1.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_d81u3")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

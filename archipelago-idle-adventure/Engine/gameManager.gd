@@ -2,7 +2,7 @@ class_name GameManager extends Node2D
 
 signal ItemReceived
 
-var character : CharacterBody2D
+var playerCharacter : CharacterBody2D
 
 # the player will send info about all nodes he encounters. They will be stored in these arrays :
 var nodesThatCanBeExplored : Array[MovementNodes] # Log of all nodes found currently
@@ -12,7 +12,7 @@ var aStar2D : AStar2D = AStar2D.new()
 var hintLocations : Array[MovementNodes]
 
 func PlayerReady(startNode : MovementNodes, characterNode : CharacterBody2D):
-	character = characterNode
+	playerCharacter = characterNode
 	nodesThatCanBeExplored.append(startNode)
 	nodesUnexplored.append(startNode)
 	aStar2D.add_point(0, startNode.global_position)
@@ -36,7 +36,7 @@ func RefreshLists(arrivedToNode : MovementNodes):
 			# Add to the list of nodes to be potentially visited
 			AddtoAStar(ReturnEntryFromList(arrivedToNode),ReturnEntryFromList(possibleNewNodes[i]),possibleNewNodes[i].position)
 			
-			print("Astart list is : ", aStar2D.get_available_point_id())
+			#print("Astart list is : ", aStar2D.get_available_point_id())
 			#Add to the AStar path finding the new node, and its position, as well as connect it
 			# Give the arrivedToNode to say what it is connected to
 	
@@ -54,18 +54,9 @@ func ReturnEntryFromList(what : MovementNodes,list : Array = nodesThatCanBeExplo
 		return -1
 
 func AddtoAStar(id_arrivedAt : int, id_foundNode:int, pos_foundNode: Vector2):
-	#feed IDs from nodesThatCanBeExplored, so that the ID stays consistent.
-	#print("\nAddToStar : ")
-	#print("-arrived at : ", id_arrivedAt, " ( is: ", nodesThatHaveBeenExplored[id_arrivedAt].name, " )")
-	#print("-foundNode : ", id_foundNode, " ( is: ", nodesThatHaveBeenExplored[id_foundNode].name, " )")
-	#print("-positionNode : ", pos_foundNode, " ( is: ", pos_foundNode, " )")
-	#print("\n-foundNode : ", id_foundNode, "\n-nodeposition : ", pos_foundNode))
-	
-	#print("added", id_foundNode, " to astar")
 	aStar2D.add_point(id_foundNode, pos_foundNode)
-	aStar2D.connect_points(id_arrivedAt, id_foundNode, true)
-	
-	#print("AStar's point count is : ",aStar2D.get_point_count(), "\n")
+	aStar2D.connect_points(id_foundNode, id_arrivedAt)
+
 
 func RequestPath(startNode: MovementNodes, endNode: MovementNodes) -> Array[MovementNodes]:
 	var idStartNode : int = nodesThatCanBeExplored.find(startNode)
@@ -96,10 +87,10 @@ func IsHintAvailable() -> MovementNodes:
 	elif availableHintLocations.size() == 1:
 		return availableHintLocations[0]
 	else:
-		var lastHintDistance : float = character.global_position.distance_to(availableHintLocations[0].global_position)
+		var lastHintDistance : float = playerCharacter.global_position.distance_to(availableHintLocations[0].global_position)
 		var closestHint : MovementNodes = availableHintLocations[0]
 		for i in availableHintLocations.size():
-			if lastHintDistance < character.global_position.distance_to(availableHintLocations[i].global_position):
+			if lastHintDistance < playerCharacter.global_position.distance_to(availableHintLocations[i].global_position):
 				closestHint = availableHintLocations[i]
 		return null
 
@@ -107,7 +98,7 @@ func ObtainedItem():
 	pass
 
 func IsGoMode():
-	#checks if the character can go finish the game
+	#checks if the playerCharacter can go finish the game
 	pass
 
 func CheckPreviouslyUnavailablePaths():
@@ -141,9 +132,34 @@ func ShowArraysOnLabels():
 
 func GetClosestUnexploredNode() -> MovementNodes:
 	var currentNodeChosen : MovementNodes = nodesUnexplored[0]
-	var currentNodeDistance : float = character.global_position.distance_to(nodesUnexplored[0].global_position)
+	var charGlobalPos : Vector2 = playerCharacter.global_position
+	var firstNodeGlobalPos : Vector2 = nodesUnexplored[0].global_position
+	var currentNodeDistance : float = charGlobalPos.distance_to(firstNodeGlobalPos)
 	for i in nodesUnexplored.size():
-		if character.global_position.distance_to(nodesUnexplored[i].global_position) < currentNodeDistance:
+		if charGlobalPos.distance_to(nodesUnexplored[i].global_position) < currentNodeDistance:
 			currentNodeChosen = nodesUnexplored[i]
-			currentNodeDistance = character.global_position.distance_to(nodesUnexplored[i].global_position)
+			currentNodeDistance = charGlobalPos.distance_to(nodesUnexplored[i].global_position)
+	return currentNodeChosen
+
+func GetClosestNodeFromList(nodeList : Array[MovementNodes]) -> MovementNodes:
+	#print("\nnode list is : ",nodeList)
+	var charGlobalPos : Vector2 = playerCharacter.global_position
+	var currentNodeChosen : MovementNodes = nodeList[0]
+	var firstNodeGlobalPos : Vector2 = nodeList[0].global_position
+	var currentNodeDistance : float = charGlobalPos.distance_to(firstNodeGlobalPos)
+	#Get the first closest unexplored
+	for i in nodeList.size():
+		if nodesUnexplored.has(nodeList[i]):
+			currentNodeChosen = nodeList[i]
+			firstNodeGlobalPos = nodeList[i].global_position
+			currentNodeDistance = charGlobalPos.distance_to(firstNodeGlobalPos)
+			break
+	for i in nodeList.size():
+		if nodesUnexplored.has(nodeList[i]):
+			#print("a ",nodeList[i])
+			if charGlobalPos.distance_to(nodeList[i].global_position) < currentNodeDistance:
+				currentNodeChosen = nodeList[i]
+				currentNodeDistance = charGlobalPos.distance_to(nodeList[i].global_position)
+	#print("chosen node has been :", currentNodeChosen)
+	#print("nodesUnexplored to see something : ", nodesUnexplored)
 	return currentNodeChosen

@@ -17,20 +17,19 @@ func ArrivedAtNodeLogic():
 		#Is there a hint available to access ?
 	
 	if NodeIsBranchingPath():
-		print("-> there are multiple paths ahead !")
-		playerCharacter.travellingToNode = GAMEMANAGER.GetClosestUnexploredNode()
+		#print("-> there are multiple paths ahead !")
+		playerCharacter.travellingToNode = GAMEMANAGER.GetClosestNodeFromList(playerCharacter.travellingToNode.connectedNodes)
 	
 	elif IsCurrentNodeNotADeadEnd() :
-		print("-> current node is not a dead end ! \n")
-		playerCharacter.travellingToNode = GAMEMANAGER.GetClosestUnexploredNode()
+		#print("-> current node is not a dead end ! \n")
+		playerCharacter.travellingToNode = GAMEMANAGER.GetClosestNodeFromList(playerCharacter.travellingToNode.connectedNodes)
 		# Path is not a dead end, get next closest path
 	
 	elif GAMEMANAGER.nodesUnexplored.size() > 0:
-		print("\nthere are currently ", GAMEMANAGER.nodesUnexplored.size(), " paths unexplored \n")
+		#print("\nthere are currently ", GAMEMANAGER.nodesUnexplored.size(), " paths unexplored \n")
 		stateMachine.SwitchState(distantUnexplored.name)
 		# is at least 1 path explorable ?
 	
 	else:
-		pass
-		print("\nthere are no longer any paths to go to. You are boned.")
+		#print("\nthere are no longer any paths to go to. You are boned.")
 		set_physics_process(false)

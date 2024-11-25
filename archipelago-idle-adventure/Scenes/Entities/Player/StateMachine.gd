@@ -8,6 +8,7 @@ func _ready() -> void:
 	currentState.ActivateState()
 
 func SwitchState(nextState : String):
+	print("\nSwitching state to : ", nextState," !")
 	var state : _State = get_node(nextState)
 	currentState.DeactivateState()
 	state.ActivateState()

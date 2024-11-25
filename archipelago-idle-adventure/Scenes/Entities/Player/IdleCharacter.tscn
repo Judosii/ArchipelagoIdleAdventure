@@ -19,6 +19,7 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="character" type="CharacterBody2D" node_paths=PackedStringArray("_stateMachine")]
 script = ExtResource("1_snurf")
+SPEED = 200
 _stateMachine = NodePath("States")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

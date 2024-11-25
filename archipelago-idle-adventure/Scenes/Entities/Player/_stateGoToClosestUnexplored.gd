@@ -12,13 +12,16 @@ func ActivateState():
 	nodePathToObjective.remove_at(0)
 	currentObjectiveNode = nodePathToObjective[0]
 	playerCharacter.travellingToNode = currentObjectiveNode
-	print(playerCharacter.travellingToNode)
+	#print(playerCharacter.travellingToNode)
 
 func ArrivedAtNodeLogic():
 	super.ArrivedAtNodeLogic()
 	nodePathToObjective.remove_at(0)
 	if nodePathToObjective.size() == 0 :
-		stateMachine.SwitchState(_stateExplore.name)
+		if GAMEMANAGER.nodesUnexplored.size() > 0:
+			stateMachine.SwitchState(_stateExplore.name)
+		else:
+			playerCharacter.set_physics_process(false)
 	else:
 		currentObjectiveNode = nodePathToObjective[0]
 		playerCharacter.travellingToNode = currentObjectiveNode

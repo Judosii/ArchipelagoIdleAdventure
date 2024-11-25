@@ -44,15 +44,25 @@ label_settings = SubResource("LabelSettings_6xxho")
 script = ExtResource("3_q16un")
 startingState = NodePath("Explore")
 
-[node name="Idle" type="Node2D" parent="States"]
+[node name="Idle" type="Node2D" parent="States" node_paths=PackedStringArray("playerCharacter", "stateMachine")]
 script = ExtResource("4_02oqc")
+playerCharacter = NodePath("../..")
+stateMachine = NodePath("..")
 
-[node name="Explore" type="Node2D" parent="States" node_paths=PackedStringArray("stateGoToHint")]
+[node name="Explore" type="Node2D" parent="States" node_paths=PackedStringArray("stateGoToHint", "distantUnexplored", "playerCharacter", "stateMachine")]
 script = ExtResource("5_ks5hn")
 stateGoToHint = NodePath("../GoToHint")
+distantUnexplored = NodePath("../GoToClosestUnexplored")
+playerCharacter = NodePath("../..")
+stateMachine = NodePath("..")
 
-[node name="GoToClosestUnexplored" type="Node2D" parent="States"]
+[node name="GoToClosestUnexplored" type="Node2D" parent="States" node_paths=PackedStringArray("_stateExplore", "playerCharacter", "stateMachine")]
 script = ExtResource("6_v4ctx")
+_stateExplore = NodePath("../Explore")
+playerCharacter = NodePath("../..")
+stateMachine = NodePath("..")
 
-[node name="GoToHint" type="Node2D" parent="States"]
+[node name="GoToHint" type="Node2D" parent="States" node_paths=PackedStringArray("playerCharacter", "stateMachine")]
 script = ExtResource("7_r0dnp")
+playerCharacter = NodePath("../..")
+stateMachine = NodePath("..")

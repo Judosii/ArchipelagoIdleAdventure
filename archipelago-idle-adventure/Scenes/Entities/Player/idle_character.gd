@@ -1,29 +1,24 @@
 class_name character extends CharacterBody2D
 
-signal characterArrivedAtNode
 
-const SPEED = 100
-const JUMP_VELOCITY = -400.0
-
+@export var SPEED = 100
 
 @export var _stateMachine : StateMachine
-
 @export var startNode : MovementNodes
-
 @export var travellingToNode : MovementNodes #node the character is going towards
-var currentObjectiveNode : MovementNodes = null
-var nodePathToObjective : Array[MovementNodes]
-# do set them at start to avoid a crash :D
-# by design travellingToNode can only be a node that has been in nodesThatCanBeExplored
-# once a node has been reached at least once, add it to nodesThatHaveBeenExplored, AND...
-# ... add its connections to nodesThatCanBeExplored if they haven't been there already.
-# nodesUnexplored will be used when a character reaches a dead end, to determine where to go next.
+
+var noMoreExplorableNodes : bool
 
 func _ready():
+	travellingToNode = startNode
 	GAMEMANAGER.PlayerReady(startNode, self)
 
 func _physics_process(delta: float) -> void:
-	_stateMachine.StateFunction(delta)
+	#_stateMachine.StateFunction(delta)
+	if noMoreExplorableNodes:
+		pass
+	else:
+			TravellingToNode()
 
 #func _physics_process(delta):
 	#var label : Label = get_node("Label")
@@ -34,64 +29,10 @@ func _physics_process(delta: float) -> void:
 		#TravellingToNode()
 
 func ArrivedAtNode():
-	if nodePathToObjective.size() > 0:
-		get_node("Label").text = str(nodePathToObjective[0].name)
-	print("-----------------------------------------------------------")
-	print("Arrived at a node !")
-	velocity = Vector2(0,0)
-	#print(GAMEMANAGER.HasCurrentNodeBeenExplored(travellingToNode))
 	if !GAMEMANAGER.HasCurrentNodeBeenExplored(travellingToNode):
-		print("Current node has NOT been explored !")
-		print("-> adding to game manager lists and updating")
 		# Node has been explored before
 		GAMEMANAGER.RefreshLists(travellingToNode)
-	
-	if GAMEMANAGER.IsHintAvailable():
-		print("-> hinted location available to obtain !")
-		#Is there a hint available to access ?
-	
-	if currentObjectiveNode != null && travellingToNode == nodePathToObjective[nodePathToObjective.size() -1]:
-		print("Arrived at objective ! \nStart exploring randomly again.")
-		currentObjectiveNode = null
-		nodePathToObjective.clear()
-	elif currentObjectiveNode != null :
-		print("character has an objective ! the objective is :", currentObjectiveNode.name)
-		nodePathToObjective.remove_at(0)
-		travellingToNode = nodePathToObjective[0]
-		return
-	
-	if currentObjectiveNode == null:
-		if NodeIsBranchingPath():
-			print("-> there are multiple paths ahead !")
-			travellingToNode = GAMEMANAGER.GetClosestUnexploredNode()
-		elif IsCurrentNodeNotADeadEnd() :
-			print("-> current node is not a dead end ! \n")
-			travellingToNode = GAMEMANAGER.GetClosestUnexploredNode()
-			# Path is not a dead end, get next closest path
-		elif HasObtainedItem():
-			print("-> has, in fact, obtained item !\n")
-			# Recalculate open paths
-			# Also check for Go Mode
-			if GAMEMANAGER.IsGoMode():
-				print("character is go mode !")
-				set_physics_process(false)
-			elif GAMEMANAGER.CheckPreviouslyUnavailablePaths():
-				print("not go mode yet, checking a new path")
-				set_physics_process(false)
-			else:
-				print("need to wait for an item.")
-				set_physics_process(false)
-				#Needs to wait for an item.
-		elif GAMEMANAGER.nodesUnexplored.size() > 0:
-			print("\nthere are currently ", GAMEMANAGER.nodesUnexplored.size(), " paths unexplored \n")
-			var closest = GAMEMANAGER.GetClosestUnexploredNode()
-			nodePathToObjective = GAMEMANAGER.RequestPath(travellingToNode,closest)
-			currentObjectiveNode = nodePathToObjective[0]
-			# is at least 1 path explorable ?
-		else:
-			pass
-			print("\nthere are no longer any paths to go to. You are boned.")
-			set_physics_process(false)
+	_stateMachine.StateLogic()
 
 func TravellingToNode():
 	var toBeVel : Vector2
@@ -156,3 +97,6 @@ func HasObtainedItem() -> bool:
 	# if an item has been obtained, 
 	# recalculate open paths after
 	return false
+
+func IsStuck(b : bool):
+	pass

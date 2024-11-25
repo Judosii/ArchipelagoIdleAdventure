@@ -12,5 +12,5 @@ func SwitchState(nextState : String):
 	currentState.DeactivateState()
 	state.ActivateState()
 
-func StateFunction(delta:float):
-	currentState.StateFunctionality()
+func StateLogic():
+	currentState.ArrivedAtNodeLogic()

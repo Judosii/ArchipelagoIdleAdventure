@@ -1,7 +1,5 @@
 class_name GameManager extends Node2D
 
-signal ItemReceived
-
 var playerCharacter : CharacterBody2D
 
 # the player will send info about all nodes he encounters. They will be stored in these arrays :
@@ -108,26 +106,26 @@ func CheckPreviouslyUnavailablePaths():
 	pass
 
 func ShowArraysOnLabels():
-	for i in get_node("HBoxContainer/nodesThatCanBeExplored").get_child_count():
+	for i in get_node("Debug Show Lists/nodesThatCanBeExplored").get_child_count():
 		#print("delete canBeExplored child", i)
-		get_node("HBoxContainer/nodesThatCanBeExplored").get_child(i).queue_free()
-	for i in get_node("HBoxContainer/nodesThatHaveBeenExplored").get_child_count():
+		get_node("Debug Show Lists/nodesThatCanBeExplored").get_child(i).queue_free()
+	for i in get_node("Debug Show Lists/nodesThatHaveBeenExplored").get_child_count():
 		#print("delete HaveBeenExplored child", i)
-		get_node("HBoxContainer/nodesThatHaveBeenExplored").get_child(i).queue_free()
-	for i in get_node("HBoxContainer/nodesUnexplored").get_child_count():
+		get_node("Debug Show Lists/nodesThatHaveBeenExplored").get_child(i).queue_free()
+	for i in get_node("Debug Show Lists/nodesUnexplored").get_child_count():
 		#print("delete unexplored child", i)
-		get_node("HBoxContainer/nodesUnexplored").get_child(i).queue_free()
+		get_node("Debug Show Lists/nodesUnexplored").get_child(i).queue_free()
 	for i in nodesThatCanBeExplored.size():
 		var label = Label.new()
-		get_node("HBoxContainer/nodesThatCanBeExplored").add_child(label)
+		get_node("Debug Show Lists/nodesThatCanBeExplored").add_child(label)
 		label.text = str("can be explored : " + nodesThatCanBeExplored[i].name + "||")
 	for i in nodesThatHaveBeenExplored.size():
 		var label = Label.new()
-		get_node("HBoxContainer/nodesThatHaveBeenExplored").add_child(label)
+		get_node("Debug Show Lists/nodesThatHaveBeenExplored").add_child(label)
 		label.text = str("has been explored : " + nodesThatHaveBeenExplored[i].name + "||")
 	for i in nodesUnexplored.size():
 		var label = Label.new()
-		get_node("HBoxContainer/nodesUnexplored").add_child(label)
+		get_node("Debug Show Lists/nodesUnexplored").add_child(label)
 		label.text = str("unexplored : " + nodesUnexplored[i].name + "||")
 
 func GetClosestUnexploredNode() -> MovementNodes:

@@ -34,7 +34,7 @@ func IsCurrentNodeNotADeadEnd() -> bool:
 	
 	elif nodeConnectionsSize == 2:
 		#print("-> corridor node, 2 paths available")
-		var connectionsExplored : int
+		var connectionsExplored : int = 0
 		for i in nodeConnectionsSize:
 			if nodeConnectionsList[i] in GAMEMANAGER.nodesThatHaveBeenExplored:
 				connectionsExplored += 1

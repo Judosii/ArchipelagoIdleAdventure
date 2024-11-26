@@ -13,19 +13,20 @@ texture = ExtResource("1_4wcsg")
 metadata/_edit_lock_ = true
 
 [node name="character" parent="." node_paths=PackedStringArray("startNode", "travellingToNode") instance=ExtResource("1_nogoq")]
-position = Vector2(700, 2450)
-SPEED = 400
+position = Vector2(570, 2405)
+SPEED = 0
 startNode = NodePath("../AllMoveNodes/LinkHouse/movementNode")
 travellingToNode = NodePath("../AllMoveNodes/LinkHouse/movementNode")
 
 [node name="Camera2D" type="Camera2D" parent="character"]
+metadata/_edit_lock_ = true
 
 [node name="AllMoveNodes" type="Node2D" parent="."]
 
 [node name="LinkHouse" type="Node2D" parent="AllMoveNodes"]
 
 [node name="movementNode" parent="AllMoveNodes/LinkHouse" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
-position = Vector2(569, 2406)
+position = Vector2(521, 2406)
 connectedNodes = [NodePath("../movementNode2")]
 nodeName = "Link's house"
 
@@ -363,3 +364,12 @@ nodeName = "1"
 position = Vector2(-5173, 4259)
 connectedNodes = [NodePath("../movementNode39")]
 nodeName = "1"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 503.0
+offset_top = 2312.0
+offset_right = 655.0
+offset_bottom = 2358.0
+text = "Start Character"
+
+[connection signal="button_down" from="Button" to="character" method="_on_button_button_down"]

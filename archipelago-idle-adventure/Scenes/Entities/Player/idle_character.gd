@@ -1,6 +1,5 @@
 class_name character extends CharacterBody2D
 
-
 @export var SPEED = 100
 
 @export var _stateMachine : StateMachine
@@ -8,10 +7,11 @@ class_name character extends CharacterBody2D
 @export var travellingToNode : MovementNodes #node the character is going towards
 
 func _ready():
+	Archipelago.open_console()
 	travellingToNode = startNode
 	GAMEMANAGER.PlayerReady(startNode, self)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	#_stateMachine.StateFunction(delta)
 	TravellingToNode()
 
@@ -27,3 +27,7 @@ func TravellingToNode():
 	toBeVel = (travellingToNode.global_position - global_position).normalized() * SPEED
 	velocity = toBeVel
 	move_and_slide()
+
+
+func _on_button_button_down():
+	SPEED = 400

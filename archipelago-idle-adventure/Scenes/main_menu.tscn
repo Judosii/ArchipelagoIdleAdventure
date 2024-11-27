@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://baai4vfbatthy"]
+
+[ext_resource type="Script" path="res://Scenes/mainScene.gd" id="1_dr524"]
+[ext_resource type="PackedScene" uid="uid://nxm1ex3c8es2" path="res://Scenes/Entities/Player/IdleCharacter.tscn" id="2_5p1b1"]
+
+[node name="Main Scene" type="Node"]
+script = ExtResource("1_dr524")
+
+[node name="Hud" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Main Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Main Menu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayLevel" type="Button" parent="Main Menu/VBoxContainer"]
+layout_mode = 2
+text = "Play Level"
+
+[node name="LevelEditor" type="Button" parent="Main Menu/VBoxContainer"]
+layout_mode = 2
+text = "Level editor"
+
+[node name="Main2D" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="character" parent="." instance=ExtResource("2_5p1b1")]
+visible = false
+
+[connection signal="button_down" from="Main Menu/VBoxContainer/PlayLevel" to="." method="_on_play_level_button_down"]

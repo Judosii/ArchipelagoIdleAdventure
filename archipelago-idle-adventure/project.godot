@@ -20,3 +20,7 @@ config/icon="res://icon.svg"
 GAMEMANAGER="*res://Engine/gamemanager.tscn"
 Archipelago="*res://godot_ap/autoloads/archipelago.tscn"
 TrackerManager="*res://godot_ap/autoloads/tracker_manager.gd"
+
+[display]
+
+window/stretch/mode="viewport"

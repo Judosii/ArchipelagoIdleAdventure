@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c2n04i21tvjro" path="res://Sprites/legend-of-zelda-a-link-to-the-past-light-world-snes-map.webp" id="1_4wcsg"]
 [ext_resource type="PackedScene" uid="uid://bor6yb66lbydm" path="res://Scenes/MovementNodes/movementNode.tscn" id="2_vulvb"]
 
-[node name="World Test" type="Node2D"]
+[node name="HyruleTest" type="Node2D"]
 
 [node name="HyruleLight" type="Sprite2D" parent="."]
 position = Vector2(380, -55.9999)

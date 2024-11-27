@@ -90,7 +90,7 @@ func IsHintAvailable() -> MovementNodes:
 		for i in availableHintLocations.size():
 			if lastHintDistance < playerCharacter.global_position.distance_to(availableHintLocations[i].global_position):
 				closestHint = availableHintLocations[i]
-		return null
+		return closestHint
 
 func ObtainedItem():
 	pass
@@ -161,3 +161,10 @@ func GetClosestNodeFromList(nodeList : Array[MovementNodes]) -> MovementNodes:
 	#print("chosen node has been :", currentNodeChosen)
 	#print("nodesUnexplored to see something : ", nodesUnexplored)
 	return currentNodeChosen
+
+func GetRandomNodeFromList(nodeList : Array[MovementNodes])-> MovementNodes:
+	var possibleNodes : Array[MovementNodes]
+	for i in nodeList.size():
+		if nodesUnexplored.has(nodeList[i]):
+			possibleNodes.append(nodeList[i])
+	return possibleNodes[randi() % possibleNodes.size()]

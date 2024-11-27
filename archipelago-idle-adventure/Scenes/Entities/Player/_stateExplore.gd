@@ -18,11 +18,11 @@ func ArrivedAtNodeLogic():
 	
 	if NodeIsBranchingPath():
 		#print("-> there are multiple paths ahead !")
-		playerCharacter.travellingToNode = GAMEMANAGER.GetClosestNodeFromList(playerCharacter.travellingToNode.connectedNodes)
+		playerCharacter.travellingToNode = GAMEMANAGER.GetRandomNodeFromList(playerCharacter.travellingToNode.connectedNodes)
 	
 	elif IsCurrentNodeNotADeadEnd() :
 		#print("-> current node is not a dead end ! \n")
-		playerCharacter.travellingToNode = GAMEMANAGER.GetClosestNodeFromList(playerCharacter.travellingToNode.connectedNodes)
+		playerCharacter.travellingToNode = GAMEMANAGER.GetRandomNodeFromList(playerCharacter.travellingToNode.connectedNodes)
 		# Path is not a dead end, get next closest path
 	
 	elif GAMEMANAGER.nodesUnexplored.size() > 0:

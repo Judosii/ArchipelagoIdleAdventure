@@ -40,6 +40,11 @@ func _on_level_editor_button_down():
 	#Open the level editor with levelInstance
 	print("bbb")
 
+func HideCurrentShown():
+	pass
+func Show():
+	pass
+
 # Followed this tutorial for file exploring :
 # https://youtu.be/mC4Wb_NHKA8?si=qVmsGqYBg_OVUTKQ
 

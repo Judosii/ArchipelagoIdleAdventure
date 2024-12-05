@@ -1,5 +1,6 @@
 class_name MovementNodes extends Node2D
 
+@export var startNode : bool
 @export var connectedNodes : Array[MovementNodes]
 
 @export var nodeName : String

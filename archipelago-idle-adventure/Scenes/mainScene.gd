@@ -47,11 +47,10 @@ func BackToMainMenu():
 # https://youtu.be/mC4Wb_NHKA8?si=qVmsGqYBg_OVUTKQ
 
 @export_category("File Explorer Stuff")
-@export var cont :Container
 var lvlFolderExplPath :String = ""
 var file : bool = true
 
-func SetLayout():
+func SetLayout(cont:Container):
 	file = false
 	for i in cont.get_children():
 		i.queue_free()
@@ -85,13 +84,12 @@ func _on_level_folder_back_to_main_menu_button_down() -> void:
 func _on_play_level_button_down() -> void:
 	#Can only be used on main menu
 	mainMenu.visible = false
-	levelsFolderExplorer.visible = true
-	
-	SetLayout()
+	RecentLevelsMade.visible = true
+	SetLayout(RecentLevelsMade.get_node("VBoxContainer/LevelLibrary/ScrollContainer/GridContainer"))
 
 func _on_level_editor_button_down():
 	#Can only be used on main menu
 	#Open the level editor with levelInstance
 	mainMenu.visible = false
-	RecentLevelsMade.visible = true
-	print("bbb")
+	levelsFolderExplorer.visible = true
+	SetLayout(levelsFolderExplorer.get_node("VBoxContainer/LevelLibrary/ScrollContainer/GridContainer"))

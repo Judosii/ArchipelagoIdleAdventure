@@ -3,18 +3,20 @@
 [ext_resource type="Script" path="res://Scenes/mainScene.gd" id="1_dr524"]
 [ext_resource type="PackedScene" uid="uid://nxm1ex3c8es2" path="res://Scenes/Entities/Player/IdleCharacter.tscn" id="2_5p1b1"]
 
-[node name="Main Scene" type="Node" node_paths=PackedStringArray("mainMenu", "main2D", "levelsFolderExplorer", "RecentLevelsMade", "camera")]
+[node name="Main Scene" type="Node" node_paths=PackedStringArray("mainMenu", "main2D", "levelsFolderExplorer", "RecentLevelsMade", "camera", "cont")]
 script = ExtResource("1_dr524")
 mainMenu = NodePath("Camera2D/Main Menu")
 main2D = NodePath("Main2D")
 levelsFolderExplorer = NodePath("Camera2D/LevelsFolder explorer")
 RecentLevelsMade = NodePath("Camera2D/RecentLevelsMade")
 camera = NodePath("Camera2D")
+cont = NodePath("Camera2D/LevelsFolder explorer/VBoxContainer/LevelLibrary/ScrollContainer/GridContainer")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
 
 [node name="RecentLevelsMade" type="Control" parent="Camera2D"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,21 +30,16 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/RecentLevelsMade"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="LevelLibrary" type="Panel" parent="Camera2D/RecentLevelsMade/VBoxContainer"]
+[node name="LevelLibrary" type="Panel" parent="Camera2D/RecentLevelsMade"]
 custom_minimum_size = Vector2(0, 600)
 layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/RecentLevelsMade/VBoxContainer/LevelLibrary"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Camera2D/RecentLevelsMade/LevelLibrary"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,33 +47,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="Camera2D/RecentLevelsMade/VBoxContainer/LevelLibrary/VBoxContainer"]
-layout_mode = 2
-text = "a"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Camera2D/RecentLevelsMade/VBoxContainer/LevelLibrary/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="GridContainer" type="GridContainer" parent="Camera2D/RecentLevelsMade/VBoxContainer/LevelLibrary/VBoxContainer/ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="Camera2D/RecentLevelsMade/LevelLibrary/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 4
-
-[node name="back to mainMenu" type="Panel" parent="Camera2D/RecentLevelsMade/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/RecentLevelsMade/VBoxContainer/back to mainMenu"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="levelFolderBackToMainMenu" type="Button" parent="Camera2D/RecentLevelsMade/VBoxContainer/back to mainMenu/HBoxContainer"]
-layout_mode = 2
-mouse_default_cursor_shape = 2
-text = "< back to main menu"
 
 [node name="LevelsFolder explorer" type="Control" parent="Camera2D"]
 visible = false
@@ -136,7 +111,6 @@ mouse_default_cursor_shape = 2
 text = "< back to main menu"
 
 [node name="Main Menu" type="Control" parent="Camera2D"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 
@@ -184,7 +158,6 @@ text = "Level editor"
 [node name="character" parent="." instance=ExtResource("2_5p1b1")]
 visible = false
 
-[connection signal="button_down" from="Camera2D/RecentLevelsMade/VBoxContainer/back to mainMenu/HBoxContainer/levelFolderBackToMainMenu" to="." method="_on_level_folder_back_to_main_menu_button_down"]
 [connection signal="button_down" from="Camera2D/LevelsFolder explorer/VBoxContainer/back to mainMenu/HBoxContainer/levelFolderBackToMainMenu" to="." method="_on_level_folder_back_to_main_menu_button_down"]
 [connection signal="button_down" from="Camera2D/Main Menu/Panel/VBoxContainer2/VBoxContainer/PlayLevel" to="." method="_on_play_level_button_down"]
 [connection signal="button_down" from="Camera2D/Main Menu/Panel/VBoxContainer2/VBoxContainer/LevelEditor" to="." method="_on_level_editor_button_down"]

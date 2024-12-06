@@ -3,10 +3,13 @@ extends Node
 @export_category("Main menu connections")
 @export var mainMenu : Control
 #call this to access the main menu / options and others
+
 @export var main2D : Node2D
 #instance levels HERE ONLY
+
 @export var levelsFolderExplorer : Control
 #upon clicking this, shows a list of all levels that can be played (made and are on disk)
+
 @export var RecentLevelsMade : Control
 #upon clicking "editor button"
 # Shows recent levels made that are still available on disk
@@ -15,10 +18,21 @@ extends Node
 @export var camera : Camera2D
 #need to call the camera ? here you go
 
+@export_category("Container References")
+@export var playRecentLevels : Container
+@export var playExploreFiles : Container
+@export var editLevelsExplorer : Container
+
+## LEVEL LOADING VARS
 var levelInstance : Node2D
 # the level you're playing on
-var chosenLevel : recentLevels
-#Level chosen by choose_level_button_down
+
+var chosenLevel : Resource
+#Level chosen by choose_level_button_down, used to load the level
+
+@export_category("")
+@export var recentLevelsResource : recentLevels
+
 
 
 func unloadLevel():
@@ -34,6 +48,16 @@ func loadLevel(levelName : String):
 		levelInstance = levelResource.instantiate()
 		main2D.add_child(levelInstance)
 		print(levelInstance)
+		if recentLevelsResource.levelName.size() != 0:
+			if recentLevelsResource.levelName.has(levelInstance.name):
+				# level has already been loaded once before.
+				var index = recentLevelsResource.levelName.bsearch(levelInstance.name)
+				recentLevelsResource.levelName.remove_at(index)
+				recentLevelsResource.levelName.push_front(levelInstance)
+		else:
+			# loading baby's first level !
+			recentLevelsResource.levelName.append(levelName)
+			recentLevelsResource.levelpath.append("res://Levels/%s"% levelName)
 
 func LevelChosen(levelPath : String):
 	chosenLevel = load(levelPath)
@@ -85,11 +109,12 @@ func _on_play_level_button_down() -> void:
 	#Can only be used on main menu
 	mainMenu.visible = false
 	RecentLevelsMade.visible = true
-	SetLayout(RecentLevelsMade.get_node("VBoxContainer/LevelLibrary/ScrollContainer/GridContainer"))
+	SetLayout(playExploreFiles)
+	#Show recent levels played
 
 func _on_level_editor_button_down():
 	#Can only be used on main menu
 	#Open the level editor with levelInstance
 	mainMenu.visible = false
 	levelsFolderExplorer.visible = true
-	SetLayout(levelsFolderExplorer.get_node("VBoxContainer/LevelLibrary/ScrollContainer/GridContainer"))
+	SetLayout(editLevelsExplorer)

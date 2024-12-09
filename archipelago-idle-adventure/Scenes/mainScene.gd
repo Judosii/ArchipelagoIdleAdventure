@@ -30,8 +30,11 @@ var levelInstance : Node2D
 var chosenLevel : Resource
 #Level chosen by choose_level_button_down, used to load the level
 
+var lastButtonPressed : String = ""
+
 @export_category("")
 @export var recentLevelsResource : recentLevels
+
 
 func unloadLevel():
 	if (is_instance_valid(levelInstance)):
@@ -41,21 +44,22 @@ func unloadLevel():
 func loadLevel(levelName : String):
 	unloadLevel()
 	var levelPath = "res://Levels/%s" % levelName
+	print(levelName)
 	var levelResource := load(levelPath)
 	if levelResource :
 		levelInstance = levelResource.instantiate()
 		main2D.add_child(levelInstance)
-		print(levelInstance)
-		if recentLevelsResource.levelName.size() != 0:
-			if recentLevelsResource.levelName.has(levelInstance.name):
-				# level has already been loaded once before.
-				var index = recentLevelsResource.levelName.bsearch(levelInstance.name)
-				recentLevelsResource.levelName.remove_at(index)
-				recentLevelsResource.levelName.push_front(levelInstance)
-		else:
-			# loading baby's first level !
-			recentLevelsResource.levelName.append(levelName)
-			recentLevelsResource.levelpath.append("res://Levels/%s"% levelName)
+		#print(levelInstance)
+	if recentLevelsResource.levelName.size() != 0:
+		if recentLevelsResource.levelName.has(levelInstance.name):
+			# level has already been loaded once before.
+			var index = recentLevelsResource.levelName.bsearch(levelInstance.name)
+			recentLevelsResource.levelName.remove_at(index)
+			recentLevelsResource.levelName.push_front(levelInstance)
+	else:
+		# loading baby's first level !
+		recentLevelsResource.levelName.append(levelName)
+		recentLevelsResource.levelpath.append("res://Levels/%s"% levelName)
 
 func LevelChosen(levelPath : String):
 	chosenLevel = load(levelPath)
@@ -84,7 +88,7 @@ func ShowLevelsInFiles(cont:Container):
 			var nBut = Button.new()
 			nBut.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 			nBut.text = fileName
-			print(nBut.text)
+			#print(nBut.text)
 			cont.add_child(nBut)
 			nBut.pressed.connect(loadLevel.bind(fileName))
 		fileName = dir.get_next()
@@ -96,7 +100,7 @@ func ShowRecentLevelsPlayed(cont:Container):
 	for i in recentLevelsResource.levelName.size():
 		var nBut = Button.new()
 		nBut.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-		nBut.text = str(recentLevelsResource.levelName[i] , ".tscn")
+		nBut.text = str(recentLevelsResource.levelName[i])
 		cont.add_child(nBut)
 		nBut.pressed.connect(loadLevel.bind(nBut.text))
 
@@ -120,6 +124,7 @@ func _on_play_level_button_down() -> void:
 	RecentLevelsMade.visible = true
 	ShowLevelsInFiles(playExploreFiles)
 	ShowRecentLevelsPlayed(playRecentLevels)
+	lastButtonPressed = "play"
 	#Show recent levels played
 
 func _on_level_editor_button_down():

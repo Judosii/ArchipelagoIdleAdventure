@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_j3opt")
-levelName = Array[String]([])
-levelpath = Array[String]([])
+levelName = Array[String](["other Test"])
+levelpath = Array[String](["res://Levels/other Test.tscn"])

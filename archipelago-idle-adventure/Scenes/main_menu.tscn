@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://baai4vfbatthy"]
+[gd_scene load_steps=4 format=3 uid="uid://djpilnjfpy0j6"]
 
 [ext_resource type="Script" path="res://Scenes/mainScene.gd" id="1_dr524"]
 [ext_resource type="PackedScene" uid="uid://nxm1ex3c8es2" path="res://Scenes/Entities/Player/IdleCharacter.tscn" id="2_5p1b1"]

@@ -33,8 +33,6 @@ var chosenLevel : Resource
 @export_category("")
 @export var recentLevelsResource : recentLevels
 
-
-
 func unloadLevel():
 	if (is_instance_valid(levelInstance)):
 		levelInstance.queue_free()
@@ -74,7 +72,7 @@ func BackToMainMenu():
 var lvlFolderExplPath :String = ""
 var file : bool = true
 
-func SetLayout(cont:Container):
+func ShowLevelsInFiles(cont:Container):
 	file = false
 	for i in cont.get_children():
 		i.queue_free()
@@ -86,9 +84,21 @@ func SetLayout(cont:Container):
 			var nBut = Button.new()
 			nBut.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 			nBut.text = fileName
+			print(nBut.text)
 			cont.add_child(nBut)
 			nBut.pressed.connect(loadLevel.bind(fileName))
 		fileName = dir.get_next()
+
+func ShowRecentLevelsPlayed(cont:Container):
+	file = false
+	for i in cont.get_children():
+		i.queue_free()
+	for i in recentLevelsResource.levelName.size():
+		var nBut = Button.new()
+		nBut.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+		nBut.text = str(recentLevelsResource.levelName[i] , ".tscn")
+		cont.add_child(nBut)
+		nBut.pressed.connect(loadLevel.bind(nBut.text))
 
 func FileChosen(fileName : String):
 	chosenLevel = load("res://Levels/%s"% fileName)
@@ -99,7 +109,6 @@ func FileChosen(fileName : String):
 	file = true
 	#print(chosenLevel)
 	loadLevel(chosenLevel.resource_name)
-
 # All connections from buttons and such
 
 func _on_level_folder_back_to_main_menu_button_down() -> void:
@@ -109,7 +118,8 @@ func _on_play_level_button_down() -> void:
 	#Can only be used on main menu
 	mainMenu.visible = false
 	RecentLevelsMade.visible = true
-	SetLayout(playExploreFiles)
+	ShowLevelsInFiles(playExploreFiles)
+	ShowRecentLevelsPlayed(playRecentLevels)
 	#Show recent levels played
 
 func _on_level_editor_button_down():
@@ -117,4 +127,4 @@ func _on_level_editor_button_down():
 	#Open the level editor with levelInstance
 	mainMenu.visible = false
 	levelsFolderExplorer.visible = true
-	SetLayout(editLevelsExplorer)
+	ShowLevelsInFiles(editLevelsExplorer)

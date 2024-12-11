@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://djpilnjfpy0j6"]
+[gd_scene load_steps=5 format=3 uid="uid://djpilnjfpy0j6"]
 
 [ext_resource type="Script" path="res://Scenes/mainScene.gd" id="1_dr524"]
 [ext_resource type="PackedScene" uid="uid://nxm1ex3c8es2" path="res://Scenes/Entities/Player/IdleCharacter.tscn" id="2_5p1b1"]
 [ext_resource type="Resource" uid="uid://c7bj2lnxy3622" path="res://Engine/MainSceneStuff/recentLevels.tres" id="2_bujj8"]
+[ext_resource type="Script" path="res://Scenes/MainScene/mainCameraScript.gd" id="3_3vhls"]
 
 [node name="Main Scene" type="Node" node_paths=PackedStringArray("mainMenu", "main2D", "levelsFolderExplorer", "RecentLevelsMade", "camera", "playRecentLevels", "playExploreFiles", "editLevelsExplorer")]
 script = ExtResource("1_dr524")
@@ -16,8 +17,14 @@ playExploreFiles = NodePath("Camera2D/RecentLevelsMade/VBoxContainer/Panel_Level
 editLevelsExplorer = NodePath("Camera2D/LevelsFolder explorer/VBoxContainer/LevelLibrary/VBoxContainer/Panel/ScrollContainer/GridContainer")
 recentLevelsResource = ExtResource("2_bujj8")
 
+[node name="Main2D" type="Node2D" parent="."]
+
+[node name="character" parent="." instance=ExtResource("2_5p1b1")]
+visible = false
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
+script = ExtResource("3_3vhls")
 
 [node name="RecentLevelsMade" type="Control" parent="Camera2D"]
 visible = false
@@ -224,11 +231,6 @@ text = "Play a level"
 layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "Level editor"
-
-[node name="Main2D" type="Node2D" parent="."]
-
-[node name="character" parent="." instance=ExtResource("2_5p1b1")]
-visible = false
 
 [connection signal="button_down" from="Camera2D/RecentLevelsMade/VBoxContainer/Panel_BackToMainMenu/HBoxContainer/levelFolderBackToMainMenu" to="." method="_on_level_folder_back_to_main_menu_button_down"]
 [connection signal="button_down" from="Camera2D/LevelsFolder explorer/VBoxContainer/LevelLibrary/VBoxContainer/BottomButtons/levelFolderBackToMainMenu" to="." method="_on_level_folder_back_to_main_menu_button_down"]

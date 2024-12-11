@@ -30,8 +30,6 @@ var levelInstance : Node2D
 var chosenLevel : Resource
 #Level chosen by choose_level_button_down, used to load the level
 
-var lastButtonPressed : String = ""
-
 @export_category("")
 @export var recentLevelsResource : recentLevels
 
@@ -124,7 +122,6 @@ func _on_play_level_button_down() -> void:
 	RecentLevelsMade.visible = true
 	ShowLevelsInFiles(playExploreFiles)
 	ShowRecentLevelsPlayed(playRecentLevels)
-	lastButtonPressed = "play"
 	#Show recent levels played
 
 func _on_level_editor_button_down():

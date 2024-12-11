@@ -293,7 +293,7 @@ connectedNodes = [NodePath("../movementNode39")]
 [node name="character" parent="." node_paths=PackedStringArray("startNode") instance=ExtResource("3_003dq")]
 position = Vector2(554, 2360)
 active = true
-SPEED = 400
 startNode = NodePath("../AllMoveNodes/LinkHouse/movementNode")
 
-[node name="Camera2D" type="Camera2D" parent="character"]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(554, 2360)

@@ -1,12 +1,14 @@
 class_name character extends CharacterBody2D
 
-@export var active = false
+@export var active = false # set to true when able to play and launched.
+#set to false when connection is lost, not connected to AP, or whatever else.
+var paused = false #For room transitions and whatnot
 
 @export var SPEED = 100
 
-@export var _stateMachine : StateMachine
-@export var startNode : MovementNodes
-@export var travellingToNode : MovementNodes #node the character is going towards
+@export var _stateMachine : StateMachine #Used to get the current state (ie current behaviour)
+@export var startNode : MovementNodes #the node the player will first start at.
+@export var travellingToNode : MovementNodes #node the character currently is going towards
 
 func _ready():
 	if active:
@@ -39,3 +41,11 @@ func GetPlayerActive() -> bool:
 
 func SetPlayerActive(b : bool):
 	active = b
+
+func EnteredANewRoom():
+	# Pause for a second, make camera transition to next room
+	pass
+
+func TransitionToNewRoom():
+	# Fade to black, pause player movement. Switch to next room based on node. Fade in, resume player.
+	pass

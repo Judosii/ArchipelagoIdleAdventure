@@ -41,11 +41,3 @@ func GetPlayerActive() -> bool:
 
 func SetPlayerActive(b : bool):
 	active = b
-
-func EnteredANewRoom():
-	# Pause for a second, make camera transition to next room
-	pass
-
-func TransitionToNewRoom():
-	# Fade to black, pause player movement. Switch to next room based on node. Fade in, resume player.
-	pass

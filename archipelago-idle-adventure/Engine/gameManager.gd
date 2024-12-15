@@ -1,6 +1,14 @@
 class_name GameManager extends Node2D
 
 var playerCharacter : CharacterBody2D
+var mainCam :RoomBasedCamera
+
+func SetMainCam(cam : RoomBasedCamera) : 
+	print(cam)
+	mainCam = cam
+
+func GetMainCam() -> RoomBasedCamera:
+	return mainCam
 
 # the player will send info about all nodes he encounters. They will be stored in these arrays :
 var nodesThatCanBeExplored : Array[MovementNodes] # Log of all nodes found currently
@@ -54,7 +62,6 @@ func ReturnEntryFromList(what : MovementNodes,list : Array = nodesThatCanBeExplo
 func AddtoAStar(id_arrivedAt : int, id_foundNode:int, pos_foundNode: Vector2):
 	aStar2D.add_point(id_foundNode, pos_foundNode)
 	aStar2D.connect_points(id_foundNode, id_arrivedAt)
-
 
 func RequestPath(startNode: MovementNodes, endNode: MovementNodes) -> Array[MovementNodes]:
 	var idStartNode : int = nodesThatCanBeExplored.find(startNode)
@@ -164,6 +171,10 @@ func GetClosestNodeFromList(nodeList : Array[MovementNodes]) -> MovementNodes:
 
 func GetRandomNodeFromList(nodeList : Array[MovementNodes])-> MovementNodes:
 	var possibleNodes : Array[MovementNodes]
+	if nodesUnexplored.size() == 0:
+		print("explored everything !")
+		playerCharacter.active = false
+		return null
 	for i in nodeList.size():
 		if nodesUnexplored.has(nodeList[i]):
 			possibleNodes.append(nodeList[i])

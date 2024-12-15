@@ -1,8 +1,76 @@
-[gd_scene load_steps=4 format=3 uid="uid://caq6wv4esmdq0"]
+[gd_scene load_steps=28 format=3 uid="uid://caq6wv4esmdq0"]
 
 [ext_resource type="Texture2D" uid="uid://c2n04i21tvjro" path="res://Sprites/legend-of-zelda-a-link-to-the-past-light-world-snes-map.webp" id="1_4wcsg"]
 [ext_resource type="PackedScene" uid="uid://bor6yb66lbydm" path="res://Scenes/MovementNodes/movementNode.tscn" id="2_vulvb"]
 [ext_resource type="PackedScene" uid="uid://nxm1ex3c8es2" path="res://Scenes/Entities/Player/IdleCharacter.tscn" id="3_003dq"]
+[ext_resource type="Script" path="res://Scenes/editorStuff/CameraRoomAreas.gd" id="3_rnk4d"]
+[ext_resource type="Script" path="res://Scenes/MainScene/mainCameraScript.gd" id="4_podqq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ks70c"]
+size = Vector2(1528, 1456)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lw8bg"]
+size = Vector2(1528, 3163)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eoa5s"]
+size = Vector2(3071, 3070.98)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgjhu"]
+size = Vector2(3071, 3070.98)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sawc4"]
+size = Vector2(1535, 1535.49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y65dt"]
+size = Vector2(1535, 1535.49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xtb5o"]
+size = Vector2(1535, 1535.49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jlee"]
+size = Vector2(3070, 3070.98)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0j7wp"]
+size = Vector2(1535, 1535.49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2unpc"]
+size = Vector2(3070, 3056)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ew4vb"]
+size = Vector2(1528, 1440)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mo5j"]
+size = Vector2(3078, 3158)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3l4y7"]
+size = Vector2(1539, 3158)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhqo6"]
+size = Vector2(1539, 1440)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sckm1"]
+size = Vector2(3078, 3073)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v54a2"]
+size = Vector2(1528, 1462)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l757y"]
+size = Vector2(1528, 1593)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tq75s"]
+size = Vector2(1528, 1546)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r76iw"]
+size = Vector2(1528, 1538)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qyonv"]
+size = Vector2(3062, 1521)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8if0r"]
+size = Vector2(1535, 3070.98)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6xih"]
+size = Vector2(3070, 3070.98)
 
 [node name="HyruleTest" type="Node2D"]
 
@@ -13,6 +81,7 @@ texture = ExtResource("1_4wcsg")
 metadata/_edit_lock_ = true
 
 [node name="AllMoveNodes" type="Node2D" parent="."]
+visible = false
 
 [node name="LinkHouse" type="Node2D" parent="AllMoveNodes"]
 
@@ -291,9 +360,272 @@ position = Vector2(-5173, 4259)
 connectedNodes = [NodePath("../movementNode39")]
 
 [node name="character" parent="." node_paths=PackedStringArray("startNode") instance=ExtResource("3_003dq")]
-position = Vector2(554, 2360)
+position = Vector2(614, 2383)
 active = true
 startNode = NodePath("../AllMoveNodes/LinkHouse/movementNode")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(554, 2360)
+[node name="RoomBasedCamera" type="Camera2D" parent="character"]
+script = ExtResource("4_podqq")
+
+[node name="CameraZones" type="Node2D" parent="."]
+
+[node name="LinkHouse" type="Area2D" parent="CameraZones"]
+position = Vector2(758, 2058)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse"]
+position = Vector2(0, 139)
+shape = SubResource("RectangleShape2D_ks70c")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse2" type="Area2D" parent="CameraZones"]
+position = Vector2(770, 4064.02)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse2"]
+position = Vector2(0, 441.48)
+shape = SubResource("RectangleShape2D_lw8bg")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse3" type="Area2D" parent="CameraZones"]
+position = Vector2(-764, 4064.02)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse3"]
+position = Vector2(-782, 485.98)
+shape = SubResource("RectangleShape2D_eoa5s")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse4" type="Area2D" parent="CameraZones"]
+position = Vector2(-3845, 4064)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse4"]
+position = Vector2(-771.5, 487.49)
+shape = SubResource("RectangleShape2D_kgjhu")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse5" type="Area2D" parent="CameraZones"]
+position = Vector2(0, 1745)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse5"]
+position = Vector2(-771.5, 487.49)
+shape = SubResource("RectangleShape2D_sawc4")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse6" type="Area2D" parent="CameraZones"]
+position = Vector2(-1541, 1745)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse6"]
+position = Vector2(-771.5, 487.49)
+shape = SubResource("RectangleShape2D_y65dt")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse7" type="Area2D" parent="CameraZones"]
+position = Vector2(-3084, 1745)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse7"]
+position = Vector2(-771.5, 487.49)
+shape = SubResource("RectangleShape2D_xtb5o")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse8" type="Area2D" parent="CameraZones"]
+position = Vector2(-4624, 1745)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse8"]
+position = Vector2(-771.5, 487.49)
+shape = SubResource("RectangleShape2D_xtb5o")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse9" type="Area2D" parent="CameraZones"]
+position = Vector2(-3792, -496)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse9"]
+position = Vector2(-816, 418)
+shape = SubResource("RectangleShape2D_3jlee")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse10" type="Area2D" parent="CameraZones"]
+position = Vector2(-1488, 288)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse10"]
+position = Vector2(-816, 418)
+shape = SubResource("RectangleShape2D_0j7wp")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse11" type="Area2D" parent="CameraZones"]
+position = Vector2(815, -765)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse11"]
+position = Vector2(-816, 703)
+shape = SubResource("RectangleShape2D_2unpc")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse12" type="Area2D" parent="CameraZones"]
+position = Vector2(2291, 2047)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse12"]
+position = Vector2(0, 147)
+shape = SubResource("RectangleShape2D_ew4vb")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse13" type="Area2D" parent="CameraZones"]
+position = Vector2(2297, 4061)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse13"]
+position = Vector2(775, 434)
+shape = SubResource("RectangleShape2D_4mo5j")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse14" type="Area2D" parent="CameraZones"]
+position = Vector2(4600, 4061)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse14"]
+position = Vector2(775, 434)
+shape = SubResource("RectangleShape2D_3l4y7")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse15" type="Area2D" parent="CameraZones"]
+position = Vector2(4606, 1627)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse15"]
+position = Vector2(775, 573)
+shape = SubResource("RectangleShape2D_hhqo6")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse16" type="Area2D" parent="CameraZones"]
+position = Vector2(3060, 1627)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse16"]
+position = Vector2(775, 573)
+shape = SubResource("RectangleShape2D_hhqo6")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse17" type="Area2D" parent="CameraZones"]
+position = Vector2(3860, -552)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse17"]
+position = Vector2(755, 496.5)
+shape = SubResource("RectangleShape2D_sckm1")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse18" type="Area2D" parent="CameraZones"]
+position = Vector2(2300, 314)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse18"]
+position = Vector2(0, 420)
+shape = SubResource("RectangleShape2D_v54a2")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse19" type="Area2D" parent="CameraZones"]
+position = Vector2(2318, -862)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse19"]
+position = Vector2(0, 70.5)
+shape = SubResource("RectangleShape2D_l757y")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse20" type="Area2D" parent="CameraZones"]
+position = Vector2(2297, -2040)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse20"]
+position = Vector2(0, -313)
+shape = SubResource("RectangleShape2D_tq75s")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse21" type="Area2D" parent="CameraZones"]
+position = Vector2(3829, -2040)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse21"]
+position = Vector2(0, -317)
+shape = SubResource("RectangleShape2D_r76iw")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse22" type="Area2D" parent="CameraZones"]
+position = Vector2(5371, -2040)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse22"]
+position = Vector2(0, -317)
+shape = SubResource("RectangleShape2D_r76iw")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse23" type="Area2D" parent="CameraZones"]
+position = Vector2(5371, -3581)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse23"]
+position = Vector2(0, -317)
+shape = SubResource("RectangleShape2D_r76iw")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse24" type="Area2D" parent="CameraZones"]
+position = Vector2(1, -2052)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse24"]
+position = Vector2(-7, -308.5)
+shape = SubResource("RectangleShape2D_qyonv")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse25" type="Area2D" parent="CameraZones"]
+position = Vector2(-1518, -2085)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse25"]
+position = Vector2(-782, 485.98)
+shape = SubResource("RectangleShape2D_8if0r")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse26" type="Area2D" parent="CameraZones"]
+position = Vector2(-3028, -2805)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse26"]
+position = Vector2(-816, 418)
+shape = SubResource("RectangleShape2D_0j7wp")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse27" type="Area2D" parent="CameraZones"]
+position = Vector2(-1518, -5142)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse27"]
+position = Vector2(-782, 485.98)
+shape = SubResource("RectangleShape2D_8if0r")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse28" type="Area2D" parent="CameraZones"]
+position = Vector2(-3807, -5178)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse28"]
+position = Vector2(-782, 485.98)
+shape = SubResource("RectangleShape2D_u6xih")
+metadata/_edit_lock_ = true
+
+[node name="LinkHouse29" type="Area2D" parent="CameraZones"]
+position = Vector2(-4568, -2805)
+script = ExtResource("3_rnk4d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse29"]
+position = Vector2(-816, 418)
+shape = SubResource("RectangleShape2D_0j7wp")
+metadata/_edit_lock_ = true

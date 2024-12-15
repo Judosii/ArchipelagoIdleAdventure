@@ -33,6 +33,8 @@ var chosenLevel : Resource
 @export_category("")
 @export var recentLevelsResource : recentLevels
 
+func _ready() -> void:
+	GAMEMANAGER.mainCam = camera
 
 func unloadLevel():
 	if (is_instance_valid(levelInstance)):

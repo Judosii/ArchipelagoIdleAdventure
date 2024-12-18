@@ -94,6 +94,9 @@ func ShowLevelsInFiles(cont:Container):
 		fileName = dir.get_next()
 
 func ShowRecentLevelsPlayed(cont:Container):
+	if ResourceLoader.exists("res://Engine/MainSceneStuff/recentLevels.tres"):
+		recentLevelsResource = ResourceLoader.load("res://Engine/MainSceneStuff/recentLevels.tres")
+	
 	file = false
 	for i in cont.get_children():
 		i.queue_free()
@@ -113,6 +116,7 @@ func FileChosen(fileName : String):
 	file = true
 	#print(chosenLevel)
 	loadLevel(chosenLevel.resource_name)
+
 # All connections from buttons and such
 
 func _on_level_folder_back_to_main_menu_button_down() -> void:
@@ -120,8 +124,7 @@ func _on_level_folder_back_to_main_menu_button_down() -> void:
 
 func _on_play_level_button_down() -> void:
 	#Can only be used on main menu
-	mainMenu.visible = false
-	RecentLevelsMade.visible = true
+	HideMainMenu()
 	ShowLevelsInFiles(playExploreFiles)
 	ShowRecentLevelsPlayed(playRecentLevels)
 	#Show recent levels played
@@ -129,6 +132,9 @@ func _on_play_level_button_down() -> void:
 func _on_level_editor_button_down():
 	#Can only be used on main menu
 	#Open the level editor with levelInstance
+	HideMainMenu()
+	ShowLevelsInFiles(editLevelsExplorer)
+
+func HideMainMenu():
 	mainMenu.visible = false
 	levelsFolderExplorer.visible = true
-	ShowLevelsInFiles(editLevelsExplorer)

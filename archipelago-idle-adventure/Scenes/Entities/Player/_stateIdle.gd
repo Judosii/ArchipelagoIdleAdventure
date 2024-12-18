@@ -8,7 +8,7 @@ func ActivateState():
 func DeactivateState():
 	GAMEMANAGER.disconnect("ItemReceived", CheckIfPathIsUnlocked)
 
-func CheckIfPathIsUnlocked():
+func CheckIfPathIsUnlocked(): ## NOT WORKED ON YET.
 	#print("has, obtained item !\n")
 	if GAMEMANAGER.IsGoMode():
 		#print("-> character is go mode !")

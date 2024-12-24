@@ -31,6 +31,8 @@ visible = false
 shape = SubResource("RectangleShape2D_2101c")
 
 [node name="nodeDetection" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="nodeDetection"]
 shape = SubResource("CircleShape2D_xlj2q")

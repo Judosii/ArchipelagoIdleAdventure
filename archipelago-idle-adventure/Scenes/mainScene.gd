@@ -65,7 +65,7 @@ func _on_level_editor_button_down():
 	#Open the level editor with levelInstance
 	HideMainMenu()
 	chooseLevelToEdit.visible = true
-	#ShowLevelsForEditing()
+	ShowLevelsForEditing()
 #endregion
 
 #region FileExplorerFromTutorial
@@ -81,6 +81,7 @@ func ShowLevelsForPlay():
 	#ShowLevelsInFiles(cont)
 
 func ShowLevelsForEditing():
+	print("aaaaaaaaa")
 	AddButtonsFromFilesTo(editLevelsExplorer, loadForEditing)
 	#Show levels in the chooseLevelToEdit/GridContainer
 
@@ -111,13 +112,12 @@ func AddButtonsFromFilesTo(cont : Container, connectTo : Callable):
 			pass
 		else:
 			#is a file.
-			nBut.connect("button_down",connectTo.bind(nBut.text))
+			nBut.pressed.connect(connectTo.bind(fileName))
 		fileName = dir.get_next()
 
 func AddButtonsFromResourceTo(cont: Container):
 	pass
 	#for i in resource.recentLevelsName.size():
-	#	
 #endregion
 
 #region ActuallyLoadingLevel
@@ -137,11 +137,15 @@ func loadForPlaying(levelName:String):
 func loadLevel(levelName : String):
 	unloadLevel()
 	var levelPath = "res://Levels/%s" % levelName
-	print(levelName)
-	var levelResource := load(levelPath)
+	print(levelPath)
+	var levelResource : PackedScene = load(levelPath)
 	if levelResource:
 		levelInstance = levelResource.instantiate()
 		main2D.add_child(levelInstance)
+		chooseLevelToEdit.visible = false
+		chooseLevelToPlay.visible = false
+	else:
+		printerr("What.")
 		#print(levelInstance)
 
 func LevelChosen(levelPath : String):

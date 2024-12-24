@@ -1,623 +1,666 @@
-[gd_scene load_steps=27 format=3 uid="uid://caq6wv4esmdq0"]
+[gd_scene load_steps=27 format=3 uid="uid://24vegxwwkegr"]
 
-[ext_resource type="Texture2D" uid="uid://c2n04i21tvjro" path="res://Sprites/legend-of-zelda-a-link-to-the-past-light-world-snes-map.webp" id="1_4wcsg"]
-[ext_resource type="Script" path="res://Scenes/editorStuff/Level_Base.gd" id="1_urjpd"]
-[ext_resource type="PackedScene" uid="uid://bor6yb66lbydm" path="res://Scenes/MovementNodes/movementNode.tscn" id="2_vulvb"]
-[ext_resource type="Script" path="res://Scenes/editorStuff/CameraRoomAreas.gd" id="3_rnk4d"]
+[ext_resource type="Script" path="res://Scenes/editorStuff/Level_Base.gd" id="1_1vrn5"]
+[ext_resource type="Texture2D" uid="uid://c2n04i21tvjro" path="res://Sprites/legend-of-zelda-a-link-to-the-past-light-world-snes-map.webp" id="2_lenle"]
+[ext_resource type="PackedScene" uid="uid://bor6yb66lbydm" path="res://Scenes/MovementNodes/movementNode.tscn" id="3_hycnk"]
+[ext_resource type="Script" path="res://Scenes/editorStuff/CameraRoomAreas.gd" id="4_jpv32"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ks70c"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ir0x"]
 size = Vector2(1528, 1456)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lw8bg"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_judpa"]
 size = Vector2(1528, 3163)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eoa5s"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2mbey"]
 size = Vector2(3071, 3070.98)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgjhu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7biji"]
 size = Vector2(3071, 3070.98)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sawc4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_14qbn"]
 size = Vector2(1535, 1535.49)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_y65dt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lic74"]
 size = Vector2(1535, 1535.49)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xtb5o"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghr3a"]
 size = Vector2(1535, 1535.49)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jlee"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k77j5"]
 size = Vector2(3070, 3070.98)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0j7wp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7k5k"]
 size = Vector2(1535, 1535.49)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2unpc"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txsnl"]
 size = Vector2(3070, 3056)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ew4vb"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h5r64"]
 size = Vector2(1528, 1440)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mo5j"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4b0cd"]
 size = Vector2(3078, 3158)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3l4y7"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7o0sv"]
 size = Vector2(1539, 3158)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hhqo6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6cp3"]
 size = Vector2(1539, 1440)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sckm1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ptw7e"]
 size = Vector2(3078, 3073)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v54a2"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntbe2"]
 size = Vector2(1528, 1462)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_l757y"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfnh3"]
 size = Vector2(1528, 1593)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tq75s"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_do4ju"]
 size = Vector2(1528, 1546)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_r76iw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pe7g"]
 size = Vector2(1528, 1538)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qyonv"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jhuop"]
 size = Vector2(3062, 1521)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8if0r"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ab65w"]
 size = Vector2(1535, 3070.98)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u6xih"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7n1sv"]
 size = Vector2(3070, 3070.98)
 
-[node name="HyruleTest" type="Node2D"]
-script = ExtResource("1_urjpd")
+[node name="Level" type="Node2D" node_paths=PackedStringArray("editorOnlyPanel", "startNode")]
+script = ExtResource("1_1vrn5")
+levelName = "TesttestFRFR"
+editorOnlyPanel = NodePath("PanelContainer")
+startNode = NodePath("AllMoveNodes/LinkHouse/movementNode")
 
 [node name="HyruleLight" type="Sprite2D" parent="."]
 position = Vector2(380, -55.9999)
 scale = Vector2(3, 3)
-texture = ExtResource("1_4wcsg")
+texture = ExtResource("2_lenle")
 metadata/_edit_lock_ = true
 
 [node name="AllMoveNodes" type="Node2D" parent="."]
-visible = false
 
 [node name="LinkHouse" type="Node2D" parent="AllMoveNodes"]
 
-[node name="movementNode" parent="AllMoveNodes/LinkHouse" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode" parent="AllMoveNodes/LinkHouse" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(569, 2406)
 connectedNodes = [NodePath("../movementNode2")]
 
-[node name="movementNode2" parent="AllMoveNodes/LinkHouse" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode2" parent="AllMoveNodes/LinkHouse" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(273, 2424)
 connectedNodes = [NodePath("../movementNode"), NodePath("../movementNode3")]
 
-[node name="movementNode3" parent="AllMoveNodes/LinkHouse" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode3" parent="AllMoveNodes/LinkHouse" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(277, 2666)
 connectedNodes = [NodePath("../movementNode2"), NodePath("../movementNode4"), NodePath("../../CastleWest/movementNode37")]
 
-[node name="movementNode4" parent="AllMoveNodes/LinkHouse" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode4" parent="AllMoveNodes/LinkHouse" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(677, 2698)
 connectedNodes = [NodePath("../movementNode3"), NodePath("../movementNode5"), NodePath("../../CastleSouth/movementNode30")]
 
-[node name="movementNode5" parent="AllMoveNodes/LinkHouse" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode5" parent="AllMoveNodes/LinkHouse" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(1034, 2678)
 connectedNodes = [NodePath("../movementNode6"), NodePath("../movementNode7"), NodePath("../movementNode4")]
 
-[node name="movementNode6" parent="AllMoveNodes/LinkHouse" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode6" parent="AllMoveNodes/LinkHouse" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(2327, 2691)
 connectedNodes = [NodePath("../movementNode5"), NodePath("../../CastleEast/movementNode7")]
 
-[node name="movementNode7" parent="AllMoveNodes/LinkHouse" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode7" parent="AllMoveNodes/LinkHouse" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(899, 1211)
 connectedNodes = [NodePath("../../Castle/movementNode28")]
 
 [node name="CastleEast" type="Node2D" parent="AllMoveNodes"]
 
-[node name="movementNode7" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode7" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(2391, 1861)
 connectedNodes = [NodePath("../../LinkHouse/movementNode6"), NodePath("../movementNode10"), NodePath("../movementNode8")]
 
-[node name="movementNode8" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode8" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(2209, -42)
 connectedNodes = [NodePath("../movementNode7"), NodePath("../movementNode9")]
 
-[node name="movementNode9" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode9" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(2840, -953)
 connectedNodes = [NodePath("../movementNode8"), NodePath("../../CastleNorth/movementNode24")]
 
-[node name="movementNode10" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode10" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(3480, 1760)
 connectedNodes = [NodePath("../movementNode7"), NodePath("../movementNode11")]
 
-[node name="movementNode11" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode11" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(3522, 1241)
 connectedNodes = [NodePath("../movementNode12"), NodePath("../movementNode22")]
 
-[node name="movementNode12" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode12" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(3504, 272)
 connectedNodes = [NodePath("../movementNode11"), NodePath("../movementNode13")]
 
-[node name="movementNode13" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode13" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(3900, 281)
 connectedNodes = [NodePath("../movementNode12"), NodePath("../movementNode14")]
 
-[node name="movementNode14" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode14" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(3909, -312)
 connectedNodes = [NodePath("../movementNode13"), NodePath("../movementNode15")]
 
-[node name="movementNode15" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode15" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(4672, -312)
 connectedNodes = [NodePath("../movementNode14"), NodePath("../movementNode16")]
 
-[node name="movementNode16" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode16" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(4654, 92)
 connectedNodes = [NodePath("../movementNode15"), NodePath("../movementNode17")]
 
-[node name="movementNode17" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode17" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(5112, 56)
 connectedNodes = [NodePath("../movementNode16"), NodePath("../movementNode18")]
 
-[node name="movementNode18" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode18" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(5103, -465)
 connectedNodes = [NodePath("../movementNode17"), NodePath("../movementNode19")]
 
-[node name="movementNode19" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode19" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(5426, -492)
 connectedNodes = [NodePath("../movementNode18"), NodePath("../movementNode20")]
 
-[node name="movementNode20" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode20" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(5453, -806)
 connectedNodes = [NodePath("../movementNode19"), NodePath("../movementNode21")]
 
-[node name="movementNode21" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode21" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(5660, -806)
 connectedNodes = [NodePath("../movementNode20"), NodePath("../movementNode22")]
 
-[node name="movementNode22" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode22" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(5767, 1241)
 connectedNodes = [NodePath("../movementNode11"), NodePath("../movementNode21"), NodePath("../movementNode23")]
 
-[node name="movementNode23" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode23" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(5750, 1852)
 connectedNodes = [NodePath("../movementNode22")]
 
-[node name="movementNode24" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode24" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(2871, -1982)
 connectedNodes = [NodePath("../movementNode9"), NodePath("../movementNode25")]
 
-[node name="movementNode25" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode25" parent="AllMoveNodes/CastleEast" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(3680, -1992)
 connectedNodes = [NodePath("../movementNode24")]
 
 [node name="Castle" type="Node2D" parent="AllMoveNodes"]
 
-[node name="movementNode24" parent="AllMoveNodes/Castle" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode24" parent="AllMoveNodes/Castle" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(1156, 430)
 connectedNodes = [NodePath("../movementNode25"), NodePath("../../CastleEast/movementNode8")]
 
-[node name="movementNode25" parent="AllMoveNodes/Castle" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode25" parent="AllMoveNodes/Castle" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(846, 547)
 connectedNodes = [NodePath("../movementNode24"), NodePath("../movementNode26")]
 
-[node name="movementNode26" parent="AllMoveNodes/Castle" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode26" parent="AllMoveNodes/Castle" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(34, 547)
 connectedNodes = [NodePath("../movementNode28"), NodePath("../movementNode25"), NodePath("../movementNode27")]
 
-[node name="movementNode27" parent="AllMoveNodes/Castle" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode27" parent="AllMoveNodes/Castle" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-1098, 536)
 connectedNodes = [NodePath("../movementNode26"), NodePath("../movementNode29")]
 
-[node name="movementNode28" parent="AllMoveNodes/Castle" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode28" parent="AllMoveNodes/Castle" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-12, 1159)
 connectedNodes = [NodePath("../movementNode26"), NodePath("../../LinkHouse/movementNode7")]
 
-[node name="movementNode29" parent="AllMoveNodes/Castle" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode29" parent="AllMoveNodes/Castle" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-1156, -601)
 connectedNodes = [NodePath("../../CastleNorth/movementNode32"), NodePath("../movementNode27")]
 
 [node name="CastleNorth" type="Node2D" parent="AllMoveNodes"]
 
-[node name="movementNode24" parent="AllMoveNodes/CastleNorth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode24" parent="AllMoveNodes/CastleNorth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(1901, -916)
 connectedNodes = [NodePath("../../CastleEast/movementNode9"), NodePath("../movementNode25")]
 
-[node name="movementNode25" parent="AllMoveNodes/CastleNorth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode25" parent="AllMoveNodes/CastleNorth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(1901, -1972)
 connectedNodes = [NodePath("../movementNode24"), NodePath("../movementNode26")]
 
-[node name="movementNode26" parent="AllMoveNodes/CastleNorth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode26" parent="AllMoveNodes/CastleNorth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-487, -1905)
 connectedNodes = [NodePath("../movementNode25"), NodePath("../movementNode27")]
 
-[node name="movementNode27" parent="AllMoveNodes/CastleNorth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode27" parent="AllMoveNodes/CastleNorth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-2000, -1934)
 connectedNodes = [NodePath("../movementNode30"), NodePath("../movementNode28"), NodePath("../movementNode26"), NodePath("../movementNode32")]
 
-[node name="movementNode28" parent="AllMoveNodes/CastleNorth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode28" parent="AllMoveNodes/CastleNorth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-3465, -1953)
 connectedNodes = [NodePath("../movementNode29"), NodePath("../movementNode27"), NodePath("../../CastleWest/movementNode24")]
 
-[node name="movementNode29" parent="AllMoveNodes/CastleNorth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode29" parent="AllMoveNodes/CastleNorth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-3379, -2752)
 connectedNodes = [NodePath("../movementNode30"), NodePath("../movementNode28")]
 
-[node name="movementNode30" parent="AllMoveNodes/CastleNorth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode30" parent="AllMoveNodes/CastleNorth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-2076, -3123)
 connectedNodes = [NodePath("../movementNode27"), NodePath("../movementNode31"), NodePath("../movementNode29")]
 
-[node name="movementNode31" parent="AllMoveNodes/CastleNorth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode31" parent="AllMoveNodes/CastleNorth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-2455, -4954)
 connectedNodes = [NodePath("../movementNode30")]
 
-[node name="movementNode32" parent="AllMoveNodes/CastleNorth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode32" parent="AllMoveNodes/CastleNorth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-2205, -678)
 connectedNodes = [NodePath("../../Castle/movementNode29"), NodePath("../movementNode27")]
 
 [node name="CastleWest" type="Node2D" parent="AllMoveNodes"]
 
-[node name="movementNode24" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode24" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-3731, -1316)
 connectedNodes = [NodePath("../../CastleNorth/movementNode28"), NodePath("../movementNode25")]
 
-[node name="movementNode25" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode25" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-3697, -660)
 connectedNodes = [NodePath("../movementNode24"), NodePath("../movementNode26")]
 
-[node name="movementNode26" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode26" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-3403, -660)
 connectedNodes = [NodePath("../movementNode25"), NodePath("../movementNode27")]
 
-[node name="movementNode27" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode27" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-3324, 913)
 connectedNodes = [NodePath("../movementNode25"), NodePath("../movementNode28")]
 
-[node name="movementNode28" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode28" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-3433, 1917)
 connectedNodes = [NodePath("../movementNode27"), NodePath("../movementNode29")]
 
-[node name="movementNode29" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode29" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-4033, 2109)
 connectedNodes = [NodePath("../movementNode28"), NodePath("../movementNode30")]
 
-[node name="movementNode30" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode30" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-4033, 2744)
 connectedNodes = [NodePath("../movementNode29"), NodePath("../movementNode31"), NodePath("../movementNode32")]
 
-[node name="movementNode31" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode31" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-5603, 2756)
 connectedNodes = [NodePath("../movementNode30")]
 
-[node name="movementNode32" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode32" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-3074, 2672)
 connectedNodes = [NodePath("../movementNode30"), NodePath("../movementNode33")]
 
-[node name="movementNode33" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode33" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-2798, 2972)
 connectedNodes = [NodePath("../movementNode32"), NodePath("../movementNode34")]
 
-[node name="movementNode34" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode34" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-2774, 3415)
 connectedNodes = [NodePath("../movementNode33"), NodePath("../movementNode35")]
 
-[node name="movementNode35" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode35" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-2415, 3739)
 connectedNodes = [NodePath("../movementNode34"), NodePath("../movementNode36")]
 
-[node name="movementNode36" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode36" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-1156, 3655)
 connectedNodes = [NodePath("../movementNode35"), NodePath("../movementNode37")]
 
-[node name="movementNode37" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode37" parent="AllMoveNodes/CastleWest" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-1036, 2708)
 connectedNodes = [NodePath("../movementNode36"), NodePath("../../LinkHouse/movementNode3")]
 
 [node name="CastleSouth" type="Node2D" parent="AllMoveNodes"]
 
-[node name="movementNode30" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode30" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(690, 3511)
 connectedNodes = [NodePath("../../LinkHouse/movementNode4"), NodePath("../movementNode31")]
 
-[node name="movementNode31" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode31" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(754, 4525)
 connectedNodes = [NodePath("../movementNode30"), NodePath("../movementNode32"), NodePath("../movementNode34")]
 
-[node name="movementNode32" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode32" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-399, 5625)
 connectedNodes = [NodePath("../movementNode34"), NodePath("../movementNode31"), NodePath("../movementNode33")]
 
-[node name="movementNode33" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode33" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-2919, 5764)
 connectedNodes = [NodePath("../movementNode32"), NodePath("../movementNode37")]
 
-[node name="movementNode34" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode34" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(508, 5689)
 connectedNodes = [NodePath("../movementNode31"), NodePath("../movementNode35")]
 
-[node name="movementNode35" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode35" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(5581, 5775)
 connectedNodes = [NodePath("../movementNode36"), NodePath("../movementNode34")]
 
-[node name="movementNode36" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode36" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(5602, 3468)
 connectedNodes = [NodePath("../movementNode35")]
 
-[node name="movementNode37" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode37" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-3934, 5754)
 connectedNodes = [NodePath("../movementNode33"), NodePath("../movementNode38"), NodePath("../movementNode39")]
 
-[node name="movementNode38" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode38" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-3816, 4194)
 connectedNodes = [NodePath("../movementNode37")]
 
-[node name="movementNode39" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode39" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-5247, 5262)
 connectedNodes = [NodePath("../movementNode40"), NodePath("../movementNode37")]
 
-[node name="movementNode40" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
+[node name="movementNode40" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("3_hycnk")]
 position = Vector2(-5173, 4259)
 connectedNodes = [NodePath("../movementNode39")]
 
 [node name="CameraZones" type="Node2D" parent="."]
+visible = false
 
 [node name="LinkHouse" type="Area2D" parent="CameraZones"]
 position = Vector2(758, 2058)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse"]
 position = Vector2(0, 139)
-shape = SubResource("RectangleShape2D_ks70c")
+shape = SubResource("RectangleShape2D_7ir0x")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse2" type="Area2D" parent="CameraZones"]
 position = Vector2(770, 4064.02)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse2"]
 position = Vector2(0, 441.48)
-shape = SubResource("RectangleShape2D_lw8bg")
+shape = SubResource("RectangleShape2D_judpa")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse3" type="Area2D" parent="CameraZones"]
 position = Vector2(-764, 4064.02)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse3"]
 position = Vector2(-782, 485.98)
-shape = SubResource("RectangleShape2D_eoa5s")
+shape = SubResource("RectangleShape2D_2mbey")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse4" type="Area2D" parent="CameraZones"]
 position = Vector2(-3845, 4064)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse4"]
 position = Vector2(-771.5, 487.49)
-shape = SubResource("RectangleShape2D_kgjhu")
+shape = SubResource("RectangleShape2D_7biji")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse5" type="Area2D" parent="CameraZones"]
 position = Vector2(0, 1745)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse5"]
 position = Vector2(-771.5, 487.49)
-shape = SubResource("RectangleShape2D_sawc4")
+shape = SubResource("RectangleShape2D_14qbn")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse6" type="Area2D" parent="CameraZones"]
 position = Vector2(-1541, 1745)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse6"]
 position = Vector2(-771.5, 487.49)
-shape = SubResource("RectangleShape2D_y65dt")
+shape = SubResource("RectangleShape2D_lic74")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse7" type="Area2D" parent="CameraZones"]
 position = Vector2(-3084, 1745)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse7"]
 position = Vector2(-771.5, 487.49)
-shape = SubResource("RectangleShape2D_xtb5o")
+shape = SubResource("RectangleShape2D_ghr3a")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse8" type="Area2D" parent="CameraZones"]
 position = Vector2(-4624, 1745)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse8"]
 position = Vector2(-771.5, 487.49)
-shape = SubResource("RectangleShape2D_xtb5o")
+shape = SubResource("RectangleShape2D_ghr3a")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse9" type="Area2D" parent="CameraZones"]
 position = Vector2(-3792, -496)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse9"]
 position = Vector2(-816, 418)
-shape = SubResource("RectangleShape2D_3jlee")
+shape = SubResource("RectangleShape2D_k77j5")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse10" type="Area2D" parent="CameraZones"]
 position = Vector2(-1488, 288)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse10"]
 position = Vector2(-816, 418)
-shape = SubResource("RectangleShape2D_0j7wp")
+shape = SubResource("RectangleShape2D_x7k5k")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse11" type="Area2D" parent="CameraZones"]
 position = Vector2(815, -765)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse11"]
 position = Vector2(-816, 703)
-shape = SubResource("RectangleShape2D_2unpc")
+shape = SubResource("RectangleShape2D_txsnl")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse12" type="Area2D" parent="CameraZones"]
 position = Vector2(2291, 2047)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse12"]
 position = Vector2(0, 147)
-shape = SubResource("RectangleShape2D_ew4vb")
+shape = SubResource("RectangleShape2D_h5r64")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse13" type="Area2D" parent="CameraZones"]
 position = Vector2(2297, 4061)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse13"]
 position = Vector2(775, 434)
-shape = SubResource("RectangleShape2D_4mo5j")
+shape = SubResource("RectangleShape2D_4b0cd")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse14" type="Area2D" parent="CameraZones"]
 position = Vector2(4600, 4061)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse14"]
 position = Vector2(775, 434)
-shape = SubResource("RectangleShape2D_3l4y7")
+shape = SubResource("RectangleShape2D_7o0sv")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse15" type="Area2D" parent="CameraZones"]
 position = Vector2(4606, 1627)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse15"]
 position = Vector2(775, 573)
-shape = SubResource("RectangleShape2D_hhqo6")
+shape = SubResource("RectangleShape2D_d6cp3")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse16" type="Area2D" parent="CameraZones"]
 position = Vector2(3060, 1627)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse16"]
 position = Vector2(775, 573)
-shape = SubResource("RectangleShape2D_hhqo6")
+shape = SubResource("RectangleShape2D_d6cp3")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse17" type="Area2D" parent="CameraZones"]
 position = Vector2(3860, -552)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse17"]
 position = Vector2(755, 496.5)
-shape = SubResource("RectangleShape2D_sckm1")
+shape = SubResource("RectangleShape2D_ptw7e")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse18" type="Area2D" parent="CameraZones"]
 position = Vector2(2300, 314)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse18"]
 position = Vector2(0, 420)
-shape = SubResource("RectangleShape2D_v54a2")
+shape = SubResource("RectangleShape2D_ntbe2")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse19" type="Area2D" parent="CameraZones"]
 position = Vector2(2318, -862)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse19"]
 position = Vector2(0, 70.5)
-shape = SubResource("RectangleShape2D_l757y")
+shape = SubResource("RectangleShape2D_cfnh3")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse20" type="Area2D" parent="CameraZones"]
 position = Vector2(2297, -2040)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse20"]
 position = Vector2(0, -313)
-shape = SubResource("RectangleShape2D_tq75s")
+shape = SubResource("RectangleShape2D_do4ju")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse21" type="Area2D" parent="CameraZones"]
 position = Vector2(3829, -2040)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse21"]
 position = Vector2(0, -317)
-shape = SubResource("RectangleShape2D_r76iw")
+shape = SubResource("RectangleShape2D_5pe7g")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse22" type="Area2D" parent="CameraZones"]
 position = Vector2(5371, -2040)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse22"]
 position = Vector2(0, -317)
-shape = SubResource("RectangleShape2D_r76iw")
+shape = SubResource("RectangleShape2D_5pe7g")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse23" type="Area2D" parent="CameraZones"]
 position = Vector2(5371, -3581)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse23"]
 position = Vector2(0, -317)
-shape = SubResource("RectangleShape2D_r76iw")
+shape = SubResource("RectangleShape2D_5pe7g")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse24" type="Area2D" parent="CameraZones"]
 position = Vector2(1, -2052)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse24"]
 position = Vector2(-7, -308.5)
-shape = SubResource("RectangleShape2D_qyonv")
+shape = SubResource("RectangleShape2D_jhuop")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse25" type="Area2D" parent="CameraZones"]
 position = Vector2(-1518, -2085)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse25"]
 position = Vector2(-782, 485.98)
-shape = SubResource("RectangleShape2D_8if0r")
+shape = SubResource("RectangleShape2D_ab65w")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse26" type="Area2D" parent="CameraZones"]
 position = Vector2(-3028, -2805)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse26"]
 position = Vector2(-816, 418)
-shape = SubResource("RectangleShape2D_0j7wp")
+shape = SubResource("RectangleShape2D_x7k5k")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse27" type="Area2D" parent="CameraZones"]
 position = Vector2(-1518, -5142)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse27"]
 position = Vector2(-782, 485.98)
-shape = SubResource("RectangleShape2D_8if0r")
+shape = SubResource("RectangleShape2D_ab65w")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse28" type="Area2D" parent="CameraZones"]
 position = Vector2(-3807, -5178)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse28"]
 position = Vector2(-782, 485.98)
-shape = SubResource("RectangleShape2D_u6xih")
+shape = SubResource("RectangleShape2D_7n1sv")
 metadata/_edit_lock_ = true
 
 [node name="LinkHouse29" type="Area2D" parent="CameraZones"]
 position = Vector2(-4568, -2805)
-script = ExtResource("3_rnk4d")
+script = ExtResource("4_jpv32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraZones/LinkHouse29"]
 position = Vector2(-816, 418)
-shape = SubResource("RectangleShape2D_0j7wp")
+shape = SubResource("RectangleShape2D_x7k5k")
 metadata/_edit_lock_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(1152, 0)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="PanelContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Hide Menu"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Button" type="Button" parent="PanelContainer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "A"

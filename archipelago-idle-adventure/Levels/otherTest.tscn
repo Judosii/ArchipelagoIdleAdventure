@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://csmi5axmm23y6"]
+
+[ext_resource type="Texture2D" uid="uid://c2n04i21tvjro" path="res://Sprites/legend-of-zelda-a-link-to-the-past-light-world-snes-map.webp" id="1_jodco"]
+
+[node name="OtherTest" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jodco")

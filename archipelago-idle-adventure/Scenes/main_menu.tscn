@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://djpilnjfpy0j6"]
+[gd_scene load_steps=6 format=3 uid="uid://djpilnjfpy0j6"]
 
 [ext_resource type="Script" path="res://Scenes/mainScene.gd" id="1_dr524"]
 [ext_resource type="PackedScene" uid="uid://nxm1ex3c8es2" path="res://Scenes/Entities/Player/IdleCharacter.tscn" id="2_5p1b1"]
-[ext_resource type="Resource" uid="uid://c7bj2lnxy3622" path="res://Engine/MainSceneStuff/recentLevels.tres" id="2_bujj8"]
+[ext_resource type="Script" path="res://Engine/MainSceneStuff/RecentLevels.gd" id="2_7be0c"]
 [ext_resource type="Script" path="res://Scenes/MainScene/mainCameraScript.gd" id="3_3vhls"]
+
+[sub_resource type="Resource" id="Resource_p1hlb"]
+script = ExtResource("2_7be0c")
+levelName = Array[String]([])
+levelpath = Array[String]([])
 
 [node name="Main Scene" type="Node" node_paths=PackedStringArray("mainMenu", "main2D", "chooseLevelToPlay", "chooseLevelToEdit", "camera", "player", "playRecentLevels", "playExploreFiles", "editLevelsExplorer")]
 script = ExtResource("1_dr524")
@@ -16,7 +21,7 @@ player = NodePath("character")
 playRecentLevels = NodePath("Camera2D/ChooseLevelToPlay/VBoxContainer/Panel_LevelLibrary/VBoxContainer/Panel_RecentLevels/ScrollContainer2/GridContainer")
 playExploreFiles = NodePath("Camera2D/ChooseLevelToPlay/VBoxContainer/Panel_LevelLibrary/VBoxContainer/Panel_FileExplorer/ScrollContainer/GridContainer")
 editLevelsExplorer = NodePath("Camera2D/ChooseLevelToEdit/VBoxContainer/LevelLibrary/VBoxContainer/Panel/ScrollContainer/GridContainer")
-recentLevelsResource = ExtResource("2_bujj8")
+recentLevelsResource = SubResource("Resource_p1hlb")
 
 [node name="Main2D" type="Node2D" parent="."]
 

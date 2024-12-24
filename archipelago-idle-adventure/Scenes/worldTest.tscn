@@ -1,10 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://caq6wv4esmdq0"]
+[gd_scene load_steps=26 format=3 uid="uid://caq6wv4esmdq0"]
 
 [ext_resource type="Texture2D" uid="uid://c2n04i21tvjro" path="res://Sprites/legend-of-zelda-a-link-to-the-past-light-world-snes-map.webp" id="1_4wcsg"]
 [ext_resource type="PackedScene" uid="uid://bor6yb66lbydm" path="res://Scenes/MovementNodes/movementNode.tscn" id="2_vulvb"]
-[ext_resource type="PackedScene" uid="uid://nxm1ex3c8es2" path="res://Scenes/Entities/Player/IdleCharacter.tscn" id="3_003dq"]
 [ext_resource type="Script" path="res://Scenes/editorStuff/CameraRoomAreas.gd" id="3_rnk4d"]
-[ext_resource type="Script" path="res://Scenes/MainScene/mainCameraScript.gd" id="4_podqq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ks70c"]
 size = Vector2(1528, 1456)
@@ -358,14 +356,6 @@ connectedNodes = [NodePath("../movementNode40"), NodePath("../movementNode37")]
 [node name="movementNode40" parent="AllMoveNodes/CastleSouth" node_paths=PackedStringArray("connectedNodes") instance=ExtResource("2_vulvb")]
 position = Vector2(-5173, 4259)
 connectedNodes = [NodePath("../movementNode39")]
-
-[node name="character" parent="." node_paths=PackedStringArray("startNode") instance=ExtResource("3_003dq")]
-position = Vector2(614, 2383)
-active = true
-startNode = NodePath("../AllMoveNodes/LinkHouse/movementNode")
-
-[node name="RoomBasedCamera" type="Camera2D" parent="character"]
-script = ExtResource("4_podqq")
 
 [node name="CameraZones" type="Node2D" parent="."]
 

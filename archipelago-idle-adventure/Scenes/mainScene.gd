@@ -81,7 +81,7 @@ func ShowLevelsForPlay():
 	#ShowLevelsInFiles(cont)
 
 func ShowLevelsForEditing():
-	print("aaaaaaaaa")
+	#print("aaaaaaaaa")
 	AddButtonsFromFilesTo(editLevelsExplorer, loadForEditing)
 	#Show levels in the chooseLevelToEdit/GridContainer
 
@@ -94,19 +94,19 @@ func AddButtonsFromFilesTo(cont : Container, connectTo : Callable):
 	#Remove previous children, 
 	for i in cont.get_children():
 		cont.get_node(str(i)).queue_free()
-	print("has removed already existing buttons")
+	#print("has removed already existing buttons")
 	
 	var dir = DirAccess.open("res://Levels")
-	print("has opened levels folder")
+	#print("has opened levels folder")
 	dir.list_dir_begin()
 	var fileName = dir.get_next()
 	while fileName != "":
-		print("loading file : ", fileName)
+		#print("loading file : ", fileName)
 		var nBut : Button = Button.new()
 		nBut.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 		nBut.text = fileName
 		cont.add_child(nBut)
-		print(nBut.get_parent())
+		#print(nBut.get_parent())
 		if dir.current_is_dir() :
 			#Is a directory.
 			pass
@@ -137,7 +137,7 @@ func loadForPlaying(levelName:String):
 func loadLevel(levelName : String):
 	unloadLevel()
 	var levelPath = "res://Levels/%s" % levelName
-	print(levelPath)
+	#print(levelPath)
 	var levelResource : PackedScene = load(levelPath)
 	if levelResource:
 		levelInstance = levelResource.instantiate()

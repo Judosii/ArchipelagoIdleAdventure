@@ -2,47 +2,58 @@
 
 [ext_resource type="Script" path="res://Scenes/editorStuff/Level_Base.gd" id="1_xlblf"]
 
-[node name="Level_Template" type="Node2D" node_paths=PackedStringArray("editorOnlyPanel")]
+[node name="Level_Template" type="Node2D" node_paths=PackedStringArray("editorOnlyPanel", "editorPosition1", "editorPosition2", "editorHideButton", "editorShowButton")]
 script = ExtResource("1_xlblf")
 levelName = "Template"
-editorOnlyPanel = NodePath("PanelContainer")
+editorOnlyPanel = NodePath("EditorStuff/EditorPanelContainer")
+editorPosition1 = NodePath("EditorStuff/EditorPos1")
+editorPosition2 = NodePath("EditorStuff/EditorPos2")
+editorHideButton = NodePath("EditorStuff/EditorPanelContainer/VBoxContainer/HideMenuButton")
+editorShowButton = NodePath("EditorStuff/EditorPanelContainer/VBoxContainer/ShowMenuButton")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(1152, 0)
+[node name="EditorStuff" type="Node" parent="."]
+
+[node name="EditorPos1" type="Node2D" parent="EditorStuff"]
+position = Vector2(0, 550)
+
+[node name="EditorPos2" type="Node2D" parent="EditorStuff"]
+position = Vector2(0, 650)
+
+[node name="EditorPanelContainer" type="PanelContainer" parent="EditorStuff"]
+custom_minimum_size = Vector2(0, 80)
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1152.0
-offset_bottom = 100.0
+offset_top = -80.0
 grow_horizontal = 2
 grow_vertical = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 4
+size_flags_vertical = 8
 
-[node name="Panel" type="Panel" parent="PanelContainer"]
+[node name="EditorPanel" type="Panel" parent="EditorStuff/EditorPanelContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="EditorStuff/EditorPanelContainer"]
+layout_mode = 2
 
-[node name="Button" type="Button" parent="PanelContainer/Panel/VBoxContainer"]
+[node name="HideMenuButton" type="Button" parent="EditorStuff/EditorPanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
-text = "Hide Menu"
+disabled = true
+text = "Ʌ"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Panel/VBoxContainer"]
+[node name="ShowMenuButton" type="Button" parent="EditorStuff/EditorPanelContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
+text = "Ʌ"
 
-[node name="Button" type="Button" parent="PanelContainer/Panel/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="EditorStuff/EditorPanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "A"
+
+[node name="AddNodeButton" type="Button" parent="EditorStuff/EditorPanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "BUTTON"
+
+[connection signal="pressed" from="EditorStuff/EditorPanelContainer/VBoxContainer/HideMenuButton" to="." method="_on_HideMenuButton_pressed"]
+[connection signal="pressed" from="EditorStuff/EditorPanelContainer/VBoxContainer/ShowMenuButton" to="." method="_on_ShowMenuButton_pressed"]

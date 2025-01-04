@@ -41,3 +41,13 @@ func GetPlayerActive() -> bool:
 
 func SetPlayerActive(b : bool):
 	active = b
+
+func ActivateNodeDetectionArea():
+	var area : Area2D = get_node("nodeDetection")
+	area.monitoring = true
+	area.monitorable = true
+
+func DeactivateNodeDetectionArea():
+	var area : Area2D = get_node("nodeDetection")
+	area.monitoring = false
+	area.monitorable = false

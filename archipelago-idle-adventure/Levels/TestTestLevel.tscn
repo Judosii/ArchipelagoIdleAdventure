@@ -657,15 +657,15 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="HideMenuButton" type="Button" parent="EditorStuff/EditorPanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "V Hide Menu V"
+
+[node name="ShowMenuButton" type="Button" parent="EditorStuff/EditorPanelContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 disabled = true
-text = "V Hide Menu V"
-
-[node name="ShowMenuButton" type="Button" parent="EditorStuff/EditorPanelContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
 text = "Ʌ Show Menu Ʌ"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="EditorStuff/EditorPanelContainer/VBoxContainer"]

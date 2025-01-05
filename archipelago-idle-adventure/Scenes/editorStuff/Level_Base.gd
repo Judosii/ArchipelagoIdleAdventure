@@ -36,7 +36,6 @@ func _on_ShowMenuButton_pressed() -> void:
 	editorShowButton.visible = false
 	editorShowButton.disabled = true
 
-
 func _on_HideMenuButton_pressed() -> void:
 	editorOnlyPanel.set_position(editorPosition2.position)
 	editorHideButton.visible = false

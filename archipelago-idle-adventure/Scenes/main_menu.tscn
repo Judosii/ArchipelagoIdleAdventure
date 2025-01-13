@@ -128,6 +128,8 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "< back to main menu"
 
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D/ChooseLevelToPlay"]
+
 [node name="ChooseLevelToEdit" type="Control" parent="Camera2D"]
 visible = false
 layout_mode = 3

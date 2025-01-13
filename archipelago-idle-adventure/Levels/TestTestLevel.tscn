@@ -1,9 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://24vegxwwkegr"]
+[gd_scene load_steps=29 format=3 uid="uid://24vegxwwkegr"]
 
 [ext_resource type="Script" path="res://Scenes/editorStuff/Level_Base.gd" id="1_1vrn5"]
 [ext_resource type="Texture2D" uid="uid://c2n04i21tvjro" path="res://Sprites/legend-of-zelda-a-link-to-the-past-light-world-snes-map.webp" id="2_lenle"]
 [ext_resource type="PackedScene" uid="uid://bor6yb66lbydm" path="res://Scenes/MovementNodes/movementNode.tscn" id="3_hycnk"]
 [ext_resource type="Script" path="res://Scenes/editorStuff/CameraRoomAreas.gd" id="4_jpv32"]
+[ext_resource type="PackedScene" uid="uid://nxm1ex3c8es2" path="res://Scenes/Entities/Player/IdleCharacter.tscn" id="5_yu370"]
+[ext_resource type="Script" path="res://Scenes/MainScene/mainCameraScript.gd" id="6_w5pqy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ir0x"]
 size = Vector2(1528, 1456)
@@ -639,6 +641,7 @@ position = Vector2(0, 568)
 position = Vector2(0, 619)
 
 [node name="EditorPanelContainer" type="PanelContainer" parent="EditorStuff"]
+visible = false
 custom_minimum_size = Vector2(0, 80)
 anchors_preset = 12
 anchor_top = 1.0
@@ -674,3 +677,19 @@ layout_mode = 2
 [node name="AddNodeButton" type="Button" parent="EditorStuff/EditorPanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "BUTTON"
+
+[node name="character" parent="." node_paths=PackedStringArray("startNode", "travellingToNode") instance=ExtResource("5_yu370")]
+position = Vector2(496, 2357)
+active = true
+SPEED = 400
+startNode = NodePath("../Main Area/AllMoveNodes/LinkHouse/movementNode")
+travellingToNode = NodePath("../Main Area/AllMoveNodes/LinkHouse/movementNode")
+
+[node name="nodeDetection" parent="character" index="2"]
+monitoring = true
+monitorable = true
+
+[node name="Camera2D" type="Camera2D" parent="character"]
+script = ExtResource("6_w5pqy")
+
+[editable path="character"]

@@ -24,3 +24,7 @@ TrackerManager="*res://godot_ap/autoloads/tracker_manager.gd"
 [display]
 
 window/stretch/mode="viewport"
+
+[global_group]
+
+navMeshObstacle="obstacle for navmesh2D navigation"

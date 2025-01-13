@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4x04f8e7eb7n"]
+[gd_scene load_steps=6 format=3 uid="uid://b4x04f8e7eb7n"]
 
 [ext_resource type="Script" path="res://Scenes/editorStuff/Level_Base.gd" id="1_1soee"]
 [ext_resource type="Texture2D" uid="uid://c2n04i21tvjro" path="res://Sprites/legend-of-zelda-a-link-to-the-past-light-world-snes-map.webp" id="2_lq4y3"]
-[ext_resource type="PackedScene" uid="uid://c4kmkglyfr44l" path="res://Scenes/Entities/Player/NavMeshBasedCharacter.tscn" id="3_3elet"]
+[ext_resource type="PackedScene" uid="uid://br4bedsdfve4j" path="res://Scenes/Entities/Player/NavMeshBasedCharacter.tscn" id="3_3elet"]
+[ext_resource type="PackedScene" uid="uid://b3300gx8vhek" path="res://NavMeshForkWork/Chest.tscn" id="4_vukao"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_djvah"]
-vertices = PackedVector2Array(906, 1993, 1608, 1561, 1594, 2877, 903, 2545, -158, 2232, 118, 2235, 116, 2297, -232, 2460, -302, 2373, 374, 2162, 728, 1890, 845, 2011, 837, 2474, 328, 2466, 197, 2458, 210, 2300, 371, 2006, 318, 2002, 322, 1949, 369, 1892, -276, 2502, -341, 2505, -406, 2444, -352, 2363, 822, 2636, 369, 2629, -658, 2876, -337, 2633, -286, 2630, 744, 1847, -754, 1536, 349, 1843, 248, 1946, 183, 2458, -139, 2460, 241, 2110, 167, 2182, -188, 2180, -309, 2334, -365, 2328, -464, 2426, -487, 2495, 147, 2502, -109, 2504, -153, 2461, -154, 2525, -241, 2558, -113, 2613, 143, 2621, 188, 2559, 326, 2510, 398, 2506, 805, 2504)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7, 8), PackedInt32Array(9, 10, 11, 12, 13, 14, 15), PackedInt32Array(16, 17, 18, 19, 10), PackedInt32Array(20, 21, 22, 23, 8, 7), PackedInt32Array(24, 3, 2), PackedInt32Array(25, 24, 2, 26, 27, 28), PackedInt32Array(1, 0, 29), PackedInt32Array(30, 1, 29, 31), PackedInt32Array(30, 31, 32), PackedInt32Array(9, 16, 10), PackedInt32Array(6, 15, 14, 33), PackedInt32Array(7, 6, 33, 34), PackedInt32Array(30, 32, 35, 36, 37), PackedInt32Array(30, 37, 38, 39), PackedInt32Array(30, 39, 40), PackedInt32Array(26, 30, 40, 41), PackedInt32Array(26, 41, 27), PackedInt32Array(42, 43, 34, 33), PackedInt32Array(7, 34, 44), PackedInt32Array(7, 44, 45, 46), PackedInt32Array(46, 45, 47, 28), PackedInt32Array(25, 28, 47, 48), PackedInt32Array(25, 48, 49, 50), PackedInt32Array(50, 49, 14, 13), PackedInt32Array(51, 13, 12, 52)])
+vertices = PackedVector2Array(907, 1992.56, 1606.98, 1561.98, 1593.01, 2875.99, 904, 2545.38, 294.5, 2504, 325.273, 2504, 324.992, 2510.15, -157.602, 2233, 116.961, 2235.98, 114.969, 2297.97, -230.938, 2459.4, -232.188, 2458.8, -301.68, 2374.08, 375.008, 2162.46, 727.57, 1891, 843.992, 2011.4, 836, 2473.56, 327.078, 2464.32, 198.094, 2457, 210.352, 2301.01, 371.977, 2005.07, 319.07, 2001.07, 322.969, 1949.38, 369.469, 1892.99, 326.82, 2470, 294.5, 2470, -276.406, 2501.01, -340.617, 2503.98, -404.703, 2443.84, -351.539, 2364.11, 822.438, 2637.01, 368.289, 2629.99, -657.063, 2875, -337.359, 2634.02, -285.43, 2630.97, 744.391, 1846, -752.922, 1537.01, 348.578, 1842, 247.023, 1945.57, 182.531, 2457, -138.5, 2458.96, 240.008, 2109.55, 166.594, 2180.99, -188.477, 2179, -309.453, 2332.94, -365.367, 2326.96, -464.867, 2425.46, -488.148, 2495.3, 188.969, 2559.36, 143.5, 2622.02, 146.523, 2501, -108.469, 2502.99, -153.992, 2460.07, -155, 2525.21, -240.031, 2558.33, -113.648, 2613.98, 804.602, 2503, 398.273, 2504.99)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6), PackedInt32Array(7, 8, 9, 10, 11, 12), PackedInt32Array(13, 14, 15, 16, 17, 18, 19), PackedInt32Array(20, 21, 22, 23, 14), PackedInt32Array(17, 24, 25, 18), PackedInt32Array(26, 27, 28, 29, 12, 11), PackedInt32Array(30, 3, 2), PackedInt32Array(31, 30, 2, 32, 33, 34), PackedInt32Array(1, 0, 35), PackedInt32Array(36, 1, 35, 37), PackedInt32Array(36, 37, 38), PackedInt32Array(13, 20, 14), PackedInt32Array(9, 19, 18, 39), PackedInt32Array(10, 9, 39, 40), PackedInt32Array(36, 38, 41, 42, 43), PackedInt32Array(36, 43, 44, 45), PackedInt32Array(36, 45, 46), PackedInt32Array(32, 36, 46, 47), PackedInt32Array(32, 47, 33), PackedInt32Array(48, 4, 6, 31, 49), PackedInt32Array(50, 51, 40, 39), PackedInt32Array(10, 40, 52), PackedInt32Array(10, 52, 53, 54), PackedInt32Array(54, 53, 55, 34), PackedInt32Array(31, 34, 55, 49), PackedInt32Array(4, 48, 18, 25), PackedInt32Array(16, 56, 57, 17)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-754, 1536, 1608, 1561, 1594, 2877, -658, 2876), PackedVector2Array(744, 1847, 349, 1843, 248, 1946, 241, 2110, 167, 2182, -188, 2180, -309, 2334, -365, 2328, -464, 2426, -487, 2495, -337, 2633, -286, 2630, -241, 2558, -232, 2460, -276, 2502, -341, 2505, -406, 2444, -352, 2363, -302, 2373, -158, 2232, 118, 2235, 116, 2297, 210, 2300, 374, 2162, 371, 2006, 318, 2002, 322, 1949, 369, 1892, 728, 1890, 845, 2011, 837, 2474, 805, 2504, 398, 2506, 328, 2466, 326, 2510, 369, 2629, 822, 2636, 903, 2545, 906, 1993), PackedVector2Array(-153, 2461, -154, 2525, -113, 2613, 143, 2621, 188, 2559, 197, 2458, 183, 2458, 147, 2502, -109, 2504, -139, 2460)])
-agent_radius = 0.0
+source_geometry_mode = 2
+source_geometry_group_name = &"navMeshObstacle"
+agent_radius = 1.0
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("editorOnlyPanel", "editorPosition1", "editorPosition2", "editorHideButton", "editorShowButton")]
 script = ExtResource("1_1soee")
@@ -19,21 +22,24 @@ editorPosition2 = NodePath("EditorStuff/EditorPos2")
 editorHideButton = NodePath("EditorStuff/EditorPanelContainer/VBoxContainer/HideMenuButton")
 editorShowButton = NodePath("EditorStuff/EditorPanelContainer/VBoxContainer/ShowMenuButton")
 
-[node name="Main Area" type="Node2D" parent="."]
-
-[node name="NavMeshAreas" type="Node2D" parent="Main Area"]
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Main Area/NavMeshAreas"]
-navigation_polygon = SubResource("NavigationPolygon_djvah")
-
-[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Main Area/NavMeshAreas"]
-vertices = PackedVector2Array(321, 2464, 324, 2521, 365, 2626, 811, 2631, 906, 2542, 899, 1993, 744, 1848, 352, 1843, 241, 1951, 241, 2105, 159, 2180, -178, 2177, -315, 2334, -367, 2328, -471, 2428, -485, 2495, -347, 2630, -286, 2627, -245, 2561, -232, 2460, -282, 2507, -339, 2504, -412, 2442, -348, 2365, -301, 2373, -156, 2228, 118, 2236, 117, 2296, 209, 2303, 371, 2158, 372, 2007, 317, 2006, 314, 1953, 366, 1892, 722, 1893, 839, 2011, 831, 2466, 804, 2506, 393, 2509)
-
-[node name="HyruleLight" type="Sprite2D" parent="Main Area"]
+[node name="HyruleLight" type="Sprite2D" parent="."]
 position = Vector2(380, -55.9999)
 scale = Vector2(3, 3)
 texture = ExtResource("2_lq4y3")
 metadata/_edit_lock_ = true
+
+[node name="Main Area" type="Node2D" parent="."]
+
+[node name="NavMeshAreas" type="Node2D" parent="Main Area"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Main Area/NavMeshAreas" groups=["navMeshObstacle"]]
+navigation_polygon = SubResource("NavigationPolygon_djvah")
+
+[node name="Sprite2D" parent="Main Area/NavMeshAreas/NavigationRegion2D" groups=["navMeshObstacle"] instance=ExtResource("4_vukao")]
+position = Vector2(312, 2506)
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Main Area/NavMeshAreas"]
+vertices = PackedVector2Array(321, 2464, 324, 2521, 365, 2626, 811, 2631, 906, 2542, 899, 1993, 744, 1848, 352, 1843, 241, 1951, 241, 2105, 159, 2180, -178, 2177, -315, 2334, -367, 2328, -471, 2428, -485, 2495, -347, 2630, -286, 2627, -245, 2561, -232, 2460, -282, 2507, -339, 2504, -412, 2442, -348, 2365, -301, 2373, -156, 2228, 118, 2236, 117, 2296, 209, 2303, 371, 2158, 372, 2007, 317, 2006, 314, 1953, 366, 1892, 722, 1893, 839, 2011, 831, 2466, 804, 2506, 393, 2509)
 
 [node name="EditorStuff" type="Node" parent="."]
 
@@ -81,9 +87,9 @@ layout_mode = 2
 layout_mode = 2
 text = "BUTTON"
 
-[node name="NavMeshCharacter" parent="." instance=ExtResource("3_3elet")]
-process_mode = 4
+[node name="NavMeshCharacter" parent="." node_paths=PackedStringArray("dest") instance=ExtResource("3_3elet")]
 position = Vector2(568, 2394)
+dest = NodePath("../Main Area/NavMeshAreas/NavigationRegion2D/Sprite2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(574, 2384)

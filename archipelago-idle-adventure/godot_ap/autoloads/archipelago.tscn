@@ -17,9 +17,10 @@ build = 0
 
 [node name="AP" type="Node"]
 script = ExtResource("1_41ph8")
+AP_GAME_NAME = "A link to the past"
 AP_CLIENT_VERSION = SubResource("Resource_pmgvy")
 AP_VERSION = SubResource("Resource_m1v20")
-AP_PRINT_ITEMS_ON_CONNECT = true
+AP_AUTO_OPEN_CONSOLE = true
 
 [node name="HangTimer" type="Timer" parent="."]
 wait_time = 5.0

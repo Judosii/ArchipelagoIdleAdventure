@@ -15,14 +15,10 @@ run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-GAMEMANAGER="*res://Engine/gamemanager.tscn"
-Archipelago="*res://godot_ap/autoloads/archipelago.tscn"
-TrackerManager="*res://godot_ap/autoloads/tracker_manager.gd"
-
 [display]
 
+window/size/viewport_width=256
+window/size/viewport_height=144
 window/stretch/mode="viewport"
 
 [global_group]

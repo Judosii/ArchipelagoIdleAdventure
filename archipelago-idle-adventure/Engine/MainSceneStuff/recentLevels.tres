@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="recentLevels" load_steps=2 format=3 uid="uid://c7bj2lnxy3622"]
-
-[ext_resource type="Script" path="res://Engine/MainSceneStuff/RecentLevels.gd" id="1_j3opt"]
-
-[resource]
-script = ExtResource("1_j3opt")
-levelName = Array[String]([])
-levelpath = Array[String]([])

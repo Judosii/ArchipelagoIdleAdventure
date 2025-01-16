@@ -37,3 +37,13 @@ func ReceivedItem():
 
 func FoundItem():
 		anim.play("SendingItem")
+
+func EnteredCameraArea():
+	pass
+	# Enter camera transition; stop moving
+	# Get camera
+	# Get camera position
+	# Set camera bounds to unbound
+	# Tween camera position to next position (nextDir.x * cam.Size.x / 2, nextDir.y * cam.Size.y / 2)
+	# Set camera bounds again
+	# Resume movement

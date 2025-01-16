@@ -4,21 +4,21 @@
 [ext_resource type="PackedScene" uid="uid://bltjljejk1wml" path="res://Scenes/Characters/test1/character_body_2d.tscn" id="2_ffl2e"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_vl5ad"]
-vertices = PackedVector2Array(1014, -1010, 1014, 1009, -1014, 1009, -1014, -1010.99)
+vertices = PackedVector2Array(1910, 2038, -2166, 2038, -2166, -2038, 1910, -2038)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-1024, -1021, -1024, 1019, 1024, 1019, 1024, -1020)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-2176, -2048, -2176, 2048, 1920, 2048, 1920, -2048)])
 parsed_geometry_type = 0
 source_geometry_mode = 2
 source_geometry_group_name = &"navMeshObstacle"
 
 [node name="Level Test" type="Node2D"]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["navMeshObstacle"]]
 
 [node name="LightworldLarge" type="Sprite2D" parent="."]
 texture = ExtResource("1_mwyim")
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." groups=["navMeshObstacle"]]
 navigation_polygon = SubResource("NavigationPolygon_vl5ad")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_ffl2e")]

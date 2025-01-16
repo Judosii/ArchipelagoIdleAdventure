@@ -91,7 +91,7 @@ _data = {
 "Walk": SubResource("Animation_qvl0q")
 }
 
-[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("nav", "anim")]
+[node name="navMeshCharacter" type="CharacterBody2D" node_paths=PackedStringArray("nav", "anim")]
 script = ExtResource("1_y42u0")
 active = true
 nav = NodePath("NavigationAgent2D")

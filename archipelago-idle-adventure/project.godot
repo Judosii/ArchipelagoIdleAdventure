@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Archipelago Idle Adventure"
-run/main_scene="res://Scenes/main_menu.tscn"
+run/main_scene="res://Scenes/Levels/level_test.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -24,3 +24,7 @@ window/stretch/mode="viewport"
 [global_group]
 
 navMeshObstacle="obstacle for navmesh2D navigation"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b24xpjqraoa4j"]
+
+[ext_resource type="Texture2D" uid="uid://cdrcmni30u2wd" path="res://Sprites/lightworld_large.png" id="1_ephfe"]
+[ext_resource type="PackedScene" uid="uid://bltjljejk1wml" path="res://Scenes/Characters/test1/character_body_2d.tscn" id="2_ffl2e"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_vl5ad"]
+vertices = PackedVector2Array(1014, -1010, 1014, 1009, -1014, 1009, -1014, -1010.99)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1024, -1021, -1024, 1019, 1024, 1019, 1024, -1020)])
+parsed_geometry_type = 0
+source_geometry_mode = 2
+source_geometry_group_name = &"navMeshObstacle"
+
+[node name="Level Test" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+
+[node name="LightworldLarge" type="Sprite2D" parent="."]
+texture = ExtResource("1_ephfe")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_vl5ad")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_ffl2e")]
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]

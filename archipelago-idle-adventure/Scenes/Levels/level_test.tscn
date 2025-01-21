@@ -1,24 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://b24xpjqraoa4j"]
+[gd_scene load_steps=8 format=4 uid="uid://b24xpjqraoa4j"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/WorldTemplateScript.gd" id="1_bofio"]
 [ext_resource type="Texture2D" uid="uid://d01ogaasscuk0" path="res://Sprites/legend-of-zelda-a-link-to-the-past-light-world-snes-map.webp" id="1_mwyim"]
 [ext_resource type="PackedScene" uid="uid://bltjljejk1wml" path="res://Scenes/Characters/test1/character_body_2d.tscn" id="2_ffl2e"]
+[ext_resource type="Texture2D" uid="uid://ikexw4aiodf8" path="res://Sprites/test.png" id="3_57iqq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_vl5ad"]
-vertices = PackedVector2Array(1910, 2038, -2166, 2038, -2166, -2038, 1910, -2038)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+vertices = PackedVector2Array(1918, -2046, 1918, 2046, 178, 866, 178, 670, -2174, -2046, 162, 654, 162, 670, 146, 654, 146, 638, 130, 638, 130, 622, -18, 622, -18, 638, -34, 638, -34, 654, -50, 654, -50, 718, -66, 718, -66, 734, -194, 734, -194, 750, -210, 750, -210, 766, -226, 766, -226, 782, -258, 782, -258, 798, -274, 798, -274, 814, -290, 814, -290, 866, -274, 866, -274, 882, -2174, 2046, -258, 882, -258, 898, -222, 898, -222, 882, -206, 882, -206, 846, -254, 846, -254, 818, -222, 818, -222, 802, -206, 802, -178, 846, -206, 786, -190, 786, -62, 846, -190, 770, -62, 770, -18, 846, -62, 754, -46, 754, -46, 738, -30, 738, -30, 722, -14, 722, 142, 846, -14, 658, 126, 658, 126, 674, 142, 674, -18, 882, -2, 882, -2, 898, -62, 882, -78, 898, -178, 882, -162, 882, -162, 898, -78, 882, 146, 898, 146, 882, 162, 882, 162, 866)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(3, 6, 5), PackedInt32Array(5, 7, 8), PackedInt32Array(4, 5, 8), PackedInt32Array(8, 9, 10), PackedInt32Array(4, 8, 10), PackedInt32Array(4, 10, 11), PackedInt32Array(11, 12, 13, 4), PackedInt32Array(13, 14, 15, 4), PackedInt32Array(15, 16, 17), PackedInt32Array(17, 18, 19), PackedInt32Array(19, 20, 21), PackedInt32Array(21, 22, 23), PackedInt32Array(23, 24, 25), PackedInt32Array(25, 26, 27), PackedInt32Array(27, 28, 29), PackedInt32Array(30, 31, 32, 33), PackedInt32Array(32, 34, 35, 33), PackedInt32Array(36, 37, 38), PackedInt32Array(39, 40, 41, 42), PackedInt32Array(42, 43, 44, 45, 39), PackedInt32Array(45, 44, 46, 47, 48), PackedInt32Array(48, 47, 49, 50, 51), PackedInt32Array(50, 52, 53, 51), PackedInt32Array(53, 54, 55, 51), PackedInt32Array(51, 55, 56, 57, 58), PackedInt32Array(57, 59, 60, 61), PackedInt32Array(61, 62, 58, 57), PackedInt32Array(63, 64, 65), PackedInt32Array(66, 63, 65, 67), PackedInt32Array(51, 63, 66, 48), PackedInt32Array(38, 39, 45, 68), PackedInt32Array(68, 69, 70, 33, 36), PackedInt32Array(67, 71, 66), PackedInt32Array(72, 73, 74, 1), PackedInt32Array(74, 75, 2, 1), PackedInt32Array(72, 1, 33, 65), PackedInt32Array(15, 17, 19, 4), PackedInt32Array(33, 4, 19, 21, 25), PackedInt32Array(67, 65, 33), PackedInt32Array(70, 67, 33), PackedInt32Array(36, 38, 68), PackedInt32Array(35, 36, 33), PackedInt32Array(29, 30, 33), PackedInt32Array(21, 23, 25), PackedInt32Array(33, 25, 27), PackedInt32Array(33, 27, 29)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-2176, -2048, -2176, 2048, 1920, 2048, 1920, -2048)])
-parsed_geometry_type = 0
-source_geometry_mode = 2
+parsed_geometry_type = 1
+source_geometry_mode = 1
 source_geometry_group_name = &"navMeshObstacle"
+agent_radius = 2.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oshrl"]
+texture = ExtResource("3_57iqq")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_bnnb0"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_oshrl")
 
 [node name="Level Test" type="Node2D"]
 script = ExtResource("1_bofio")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." groups=["navMeshObstacle"]]
-
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." groups=["navMeshObstacle"]]
-navigation_polygon = SubResource("NavigationPolygon_vl5ad")
 
 [node name="MainArea" type="Node2D" parent="."]
 
@@ -26,5 +35,15 @@ navigation_polygon = SubResource("NavigationPolygon_vl5ad")
 texture = ExtResource("1_mwyim")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_ffl2e")]
+position = Vector2(0, 800)
+active = false
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+top_level = true
+navigation_polygon = SubResource("NavigationPolygon_vl5ad")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D" groups=["navMeshObstacle"]]
+tile_map_data = PackedByteArray("AAD//zUAAAAAAAAAAAAAADUAAAAAAAAAAAABADUAAAAAAAAAAAACADUAAAAAAAAAAAADADUAAAAAAAAAAAAEADUAAAAAAAAAAAAFADUAAAAAAAAAAAAGADUAAAAAAAAAAAAHADUAAAAAAAAAAAD//zYAAAAAAAAAAAAAADYAAAAAAAAAAAABADYAAAAAAAAAAAACADYAAAAAAAAAAAADADYAAAAAAAAAAAAEADYAAAAAAAAAAAAFADYAAAAAAAAAAAAGADYAAAAAAAAAAAAHADYAAAAAAAAAAAAIADYAAAAAAAAAAAAIADUAAAAAAAAAAAAJADUAAAAAAAAAAAAKADUAAAAAAAAAAAAJADYAAAAAAAAAAAAIADcAAAAAAAAAAAAHADcAAAAAAAAAAAAGADcAAAAAAAAAAAAFADcAAAAAAAAAAAAEADcAAAAAAAAAAAADADcAAAAAAAAAAAACADcAAAAAAAAAAAABADcAAAAAAAAAAAAAADcAAAAAAAAAAAD6/zYAAAAAAAAAAAD6/zcAAAAAAAAAAAD6/zUAAAAAAAAAAAD7/zUAAAAAAAAAAAD7/zYAAAAAAAAAAAD5/zYAAAAAAAAAAAD5/zUAAAAAAAAAAAD4/zUAAAAAAAAAAAD3/zUAAAAAAAAAAAD2/zUAAAAAAAAAAAD2/zYAAAAAAAAAAAD2/zcAAAAAAAAAAAD3/zcAAAAAAAAAAAD4/zcAAAAAAAAAAAD5/zcAAAAAAAAAAAD4/zYAAAAAAAAAAAD3/zYAAAAAAAAAAAD1/zYAAAAAAAAAAAD1/zUAAAAAAAAAAADx/zUAAAAAAAAAAADx/zYAAAAAAAAAAADx/zcAAAAAAAAAAAD1/y4AAAAAAAAAAAD1/y8AAAAAAAAAAAD2/y4AAAAAAAAAAAD2/y8AAAAAAAAAAAD3/y4AAAAAAAAAAAD3/y8AAAAAAAAAAAD4/y4AAAAAAAAAAAD4/y8AAAAAAAAAAAD5/y4AAAAAAAAAAAD5/y8AAAAAAAAAAAD6/y4AAAAAAAAAAAD6/y8AAAAAAAAAAAD7/y4AAAAAAAAAAAD7/y8AAAAAAAAAAAAJADQAAAAAAAAAAAAJADMAAAAAAAAAAAAJADIAAAAAAAAAAAAJADEAAAAAAAAAAAAJADAAAAAAAAAAAAAJAC8AAAAAAAAAAAAJAC4AAAAAAAAAAAAJAC0AAAAAAAAAAAAJACwAAAAAAAAAAAAJACsAAAAAAAAAAAAKACsAAAAAAAAAAAAKACwAAAAAAAAAAAAKAC0AAAAAAAAAAAAKAC4AAAAAAAAAAAAKAC8AAAAAAAAAAAAKADAAAAAAAAAAAAAKADEAAAAAAAAAAAAKADIAAAAAAAAAAAAKADMAAAAAAAAAAAAKADQAAAAAAAAAAAAJACoAAAAAAAAAAAAIACkAAAAAAAAAAAAHACgAAAAAAAAAAAAKACoAAAAAAAAAAAAJACkAAAAAAAAAAAAIACgAAAAAAAAAAAAHACcAAAAAAAAAAAAGACgAAAAAAAAAAAAFACgAAAAAAAAAAAAEACgAAAAAAAAAAAADACgAAAAAAAAAAAACACgAAAAAAAAAAAABACgAAAAAAAAAAAAAACgAAAAAAAAAAAAGACcAAAAAAAAAAAAFACcAAAAAAAAAAAAEACcAAAAAAAAAAAADACcAAAAAAAAAAAACACcAAAAAAAAAAAABACcAAAAAAAAAAAAAACcAAAAAAAAAAAD//ygAAAAAAAAAAAD+/ykAAAAAAAAAAAD9/yoAAAAAAAAAAAD//ycAAAAAAAAAAAD+/ygAAAAAAAAAAAD9/ykAAAAAAAAAAAD9/ysAAAAAAAAAAAD9/ywAAAAAAAAAAAD+/ywAAAAAAAAAAAD+/ysAAAAAAAAAAAD+/yoAAAAAAAAAAAD8/y0AAAAAAAAAAAD9/y0AAAAAAAAAAAD8/y4AAAAAAAAAAAD0/y4AAAAAAAAAAADz/y8AAAAAAAAAAADy/zAAAAAAAAAAAADx/zEAAAAAAAAAAADw/zIAAAAAAAAAAADv/zMAAAAAAAAAAADu/zQAAAAAAAAAAAD0/y8AAAAAAAAAAADz/zAAAAAAAAAAAADy/zEAAAAAAAAAAADx/zIAAAAAAAAAAADw/zEAAAAAAAAAAADv/zIAAAAAAAAAAADu/zMAAAAAAAAAAADu/zUAAAAAAAAAAADv/zYAAAAAAAAAAADw/zcAAAAAAAAAAADw/zUAAAAAAAAAAADv/zQAAAAAAAAAAADv/zUAAAAAAAAAAADw/zYAAAAAAAAAAADy/zYAAAAAAAAAAADy/zUAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_bnnb0")

@@ -15,10 +15,14 @@ run/main_scene="res://Scenes/Levels/level_test.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GAME_MANAGER="*res://Scripts/Engine/GameManager.tscn"
+
 [display]
 
 window/size/viewport_width=256
-window/size/viewport_height=144
+window/size/viewport_height=224
 window/stretch/mode="viewport"
 
 [global_group]

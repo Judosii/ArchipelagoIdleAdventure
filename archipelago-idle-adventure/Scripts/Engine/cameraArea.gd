@@ -1,6 +1,6 @@
 class_name AreabasedCamera extends Camera2D
 
-func OnNewRoomEntered(area :Area2D): #Set limits of camera to be the room's area.
+func SetBoundsFromArea(area :Area2D): #Set limits of camera to be the room's area.
 	var collShape : CollisionShape2D = area.get_child(0)
 	var size = collShape.shape.size * 2
 	var viewSize = get_viewport_rect().size

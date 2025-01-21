@@ -1,9 +1,20 @@
-[gd_scene load_steps=8 format=4 uid="uid://b24xpjqraoa4j"]
+[gd_scene load_steps=13 format=4 uid="uid://b24xpjqraoa4j"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/WorldTemplateScript.gd" id="1_bofio"]
 [ext_resource type="Texture2D" uid="uid://d01ogaasscuk0" path="res://Sprites/legend-of-zelda-a-link-to-the-past-light-world-snes-map.webp" id="1_mwyim"]
 [ext_resource type="PackedScene" uid="uid://bltjljejk1wml" path="res://Scenes/Characters/test1/character_body_2d.tscn" id="2_ffl2e"]
 [ext_resource type="Texture2D" uid="uid://ikexw4aiodf8" path="res://Sprites/test.png" id="3_57iqq"]
+[ext_resource type="PackedScene" uid="uid://cbtkdpixloypg" path="res://Scripts/Engine/Camera/AreaForCamera.tscn" id="3_r201e"]
+[ext_resource type="PackedScene" uid="uid://ctuh5g7lbjx6l" path="res://Scenes/LevelElements/Location.tscn" id="4_v0e1c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbv7m"]
+size = Vector2(500, 336)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgjsy"]
+size = Vector2(512, 940)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gt8cn"]
+size = Vector2(1000, 1176)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_vl5ad"]
 vertices = PackedVector2Array(1918, -2046, 1918, 2046, 178, 866, 178, 670, -2174, -2046, 162, 654, 162, 670, 146, 654, 146, 638, 130, 638, 130, 622, -18, 622, -18, 638, -34, 638, -34, 654, -50, 654, -50, 718, -66, 718, -66, 734, -194, 734, -194, 750, -210, 750, -210, 766, -226, 766, -226, 782, -258, 782, -258, 798, -274, 798, -274, 814, -290, 814, -290, 866, -274, 866, -274, 882, -2174, 2046, -258, 882, -258, 898, -222, 898, -222, 882, -206, 882, -206, 846, -254, 846, -254, 818, -222, 818, -222, 802, -206, 802, -178, 846, -206, 786, -190, 786, -62, 846, -190, 770, -62, 770, -18, 846, -62, 754, -46, 754, -46, 738, -30, 738, -30, 722, -14, 722, 142, 846, -14, 658, 126, 658, 126, 674, 142, 674, -18, 882, -2, 882, -2, 898, -62, 882, -78, 898, -178, 882, -162, 882, -162, 898, -78, 882, 146, 898, 146, 882, 162, 882, 162, 866)
@@ -34,16 +45,59 @@ script = ExtResource("1_bofio")
 [node name="LightworldLarge" type="Sprite2D" parent="MainArea"]
 texture = ExtResource("1_mwyim")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_ffl2e")]
+[node name="AreaParent" type="Node2D" parent="MainArea"]
+
+[node name="Link\'sHouse" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(116, 836)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/Link\'sHouse" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+
+[node name="Bridge" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(622, 856)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/Bridge" index="0"]
+position = Vector2(0, -302)
+shape = SubResource("RectangleShape2D_wgjsy")
+
+[node name="HyruleCastle" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-134, 80)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/HyruleCastle" index="0"]
+shape = SubResource("RectangleShape2D_gt8cn")
+
+[node name="LocationParent" type="Node2D" parent="MainArea"]
+
+[node name="Location" parent="MainArea/LocationParent" instance=ExtResource("4_v0e1c")]
+position = Vector2(65, 805)
+
+[node name="Location2" parent="MainArea/LocationParent" instance=ExtResource("4_v0e1c")]
+position = Vector2(215, 761)
+
+[node name="Location3" parent="MainArea/LocationParent" instance=ExtResource("4_v0e1c")]
+position = Vector2(205, 533)
+
+[node name="Location4" parent="MainArea/LocationParent" instance=ExtResource("4_v0e1c")]
+position = Vector2(330, 907)
+
+[node name="Location5" parent="MainArea/LocationParent" instance=ExtResource("4_v0e1c")]
+position = Vector2(621, 904)
+
+[node name="CharacterBody2D" parent="." node_paths=PackedStringArray("list") instance=ExtResource("2_ffl2e")]
 position = Vector2(0, 800)
-active = false
+list = [NodePath("../MainArea/LocationParent/Location"), NodePath("../MainArea/LocationParent/Location2"), NodePath("../MainArea/LocationParent/Location3"), NodePath("../MainArea/LocationParent/Location4"), NodePath("../MainArea/LocationParent/Location5")]
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 top_level = true
 navigation_polygon = SubResource("NavigationPolygon_vl5ad")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D" groups=["navMeshObstacle"]]
+[node name="ObstacleTilemap" type="TileMapLayer" parent="NavigationRegion2D" groups=["navMeshObstacle"]]
 tile_map_data = PackedByteArray("AAD//zUAAAAAAAAAAAAAADUAAAAAAAAAAAABADUAAAAAAAAAAAACADUAAAAAAAAAAAADADUAAAAAAAAAAAAEADUAAAAAAAAAAAAFADUAAAAAAAAAAAAGADUAAAAAAAAAAAAHADUAAAAAAAAAAAD//zYAAAAAAAAAAAAAADYAAAAAAAAAAAABADYAAAAAAAAAAAACADYAAAAAAAAAAAADADYAAAAAAAAAAAAEADYAAAAAAAAAAAAFADYAAAAAAAAAAAAGADYAAAAAAAAAAAAHADYAAAAAAAAAAAAIADYAAAAAAAAAAAAIADUAAAAAAAAAAAAJADUAAAAAAAAAAAAKADUAAAAAAAAAAAAJADYAAAAAAAAAAAAIADcAAAAAAAAAAAAHADcAAAAAAAAAAAAGADcAAAAAAAAAAAAFADcAAAAAAAAAAAAEADcAAAAAAAAAAAADADcAAAAAAAAAAAACADcAAAAAAAAAAAABADcAAAAAAAAAAAAAADcAAAAAAAAAAAD6/zYAAAAAAAAAAAD6/zcAAAAAAAAAAAD6/zUAAAAAAAAAAAD7/zUAAAAAAAAAAAD7/zYAAAAAAAAAAAD5/zYAAAAAAAAAAAD5/zUAAAAAAAAAAAD4/zUAAAAAAAAAAAD3/zUAAAAAAAAAAAD2/zUAAAAAAAAAAAD2/zYAAAAAAAAAAAD2/zcAAAAAAAAAAAD3/zcAAAAAAAAAAAD4/zcAAAAAAAAAAAD5/zcAAAAAAAAAAAD4/zYAAAAAAAAAAAD3/zYAAAAAAAAAAAD1/zYAAAAAAAAAAAD1/zUAAAAAAAAAAADx/zUAAAAAAAAAAADx/zYAAAAAAAAAAADx/zcAAAAAAAAAAAD1/y4AAAAAAAAAAAD1/y8AAAAAAAAAAAD2/y4AAAAAAAAAAAD2/y8AAAAAAAAAAAD3/y4AAAAAAAAAAAD3/y8AAAAAAAAAAAD4/y4AAAAAAAAAAAD4/y8AAAAAAAAAAAD5/y4AAAAAAAAAAAD5/y8AAAAAAAAAAAD6/y4AAAAAAAAAAAD6/y8AAAAAAAAAAAD7/y4AAAAAAAAAAAD7/y8AAAAAAAAAAAAJADQAAAAAAAAAAAAJADMAAAAAAAAAAAAJADIAAAAAAAAAAAAJADEAAAAAAAAAAAAJADAAAAAAAAAAAAAJAC8AAAAAAAAAAAAJAC4AAAAAAAAAAAAJAC0AAAAAAAAAAAAJACwAAAAAAAAAAAAJACsAAAAAAAAAAAAKACsAAAAAAAAAAAAKACwAAAAAAAAAAAAKAC0AAAAAAAAAAAAKAC4AAAAAAAAAAAAKAC8AAAAAAAAAAAAKADAAAAAAAAAAAAAKADEAAAAAAAAAAAAKADIAAAAAAAAAAAAKADMAAAAAAAAAAAAKADQAAAAAAAAAAAAJACoAAAAAAAAAAAAIACkAAAAAAAAAAAAHACgAAAAAAAAAAAAKACoAAAAAAAAAAAAJACkAAAAAAAAAAAAIACgAAAAAAAAAAAAHACcAAAAAAAAAAAAGACgAAAAAAAAAAAAFACgAAAAAAAAAAAAEACgAAAAAAAAAAAADACgAAAAAAAAAAAACACgAAAAAAAAAAAABACgAAAAAAAAAAAAAACgAAAAAAAAAAAAGACcAAAAAAAAAAAAFACcAAAAAAAAAAAAEACcAAAAAAAAAAAADACcAAAAAAAAAAAACACcAAAAAAAAAAAABACcAAAAAAAAAAAAAACcAAAAAAAAAAAD//ygAAAAAAAAAAAD+/ykAAAAAAAAAAAD9/yoAAAAAAAAAAAD//ycAAAAAAAAAAAD+/ygAAAAAAAAAAAD9/ykAAAAAAAAAAAD9/ysAAAAAAAAAAAD9/ywAAAAAAAAAAAD+/ywAAAAAAAAAAAD+/ysAAAAAAAAAAAD+/yoAAAAAAAAAAAD8/y0AAAAAAAAAAAD9/y0AAAAAAAAAAAD8/y4AAAAAAAAAAAD0/y4AAAAAAAAAAADz/y8AAAAAAAAAAADy/zAAAAAAAAAAAADx/zEAAAAAAAAAAADw/zIAAAAAAAAAAADv/zMAAAAAAAAAAADu/zQAAAAAAAAAAAD0/y8AAAAAAAAAAADz/zAAAAAAAAAAAADy/zEAAAAAAAAAAADx/zIAAAAAAAAAAADw/zEAAAAAAAAAAADv/zIAAAAAAAAAAADu/zMAAAAAAAAAAADu/zUAAAAAAAAAAADv/zYAAAAAAAAAAADw/zcAAAAAAAAAAADw/zUAAAAAAAAAAADv/zQAAAAAAAAAAADv/zUAAAAAAAAAAADw/zYAAAAAAAAAAADy/zYAAAAAAAAAAADy/zUAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_bnnb0")
+
+[editable path="MainArea/AreaParent/Link\'sHouse"]
+[editable path="MainArea/AreaParent/Bridge"]
+[editable path="MainArea/AreaParent/HyruleCastle"]

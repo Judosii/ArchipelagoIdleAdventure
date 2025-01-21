@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctuh5g7lbjx6l"]
+
+[ext_resource type="Texture2D" uid="uid://ceghvf8xqgoq4" path="res://Sprites/alttpChest.png" id="1_y7giy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_laack"]
+size = Vector2(16, 16)
+
+[node name="Location" type="Sprite2D"]
+texture = ExtResource("1_y7giy")
+offset = Vector2(0, -8)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_laack")

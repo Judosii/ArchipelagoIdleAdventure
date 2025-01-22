@@ -1,6 +1,7 @@
 extends Area2D
 
-func _on_body_entered(body: Node2D) -> void:
-	if body is NavMeshCharacter:
-		var chara : NavMeshCharacter = body
+func _on_area_entered(area: Area2D) -> void:
+	if area.get_parent() is NavMeshCharacter:
+		print("Character entered zone!")
+		var chara : NavMeshCharacter = area.get_parent()
 		GAME_MANAGER.CameraScrollTransition(self)

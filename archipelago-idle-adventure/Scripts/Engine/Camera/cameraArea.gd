@@ -5,7 +5,7 @@ func _ready():
 
 func SetBoundsFromArea(area :Area2D): #Set limits of camera to be the room's area.
 	var collShape : CollisionShape2D = area.get_child(0)
-	var size = collShape.shape.size * 2
+	var size = collShape.shape.size 
 	var viewSize = get_viewport_rect().size
 	
 	if size.y < viewSize.y : size.y = viewSize.y
@@ -15,6 +15,7 @@ func SetBoundsFromArea(area :Area2D): #Set limits of camera to be the room's are
 	limit_left = collShape.global_position.x - size.x /2
 	limit_bottom = limit_top + size.y 
 	limit_right = limit_left+ size.x  
+	print(limit_top)
 
 func CameraTransition(dir : Vector2):
 	limit_bottom = 10000

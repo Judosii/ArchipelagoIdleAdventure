@@ -1,7 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bltjljejk1wml"]
+[gd_scene load_steps=11 format=3 uid="uid://bltjljejk1wml"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/test1/NavMeshCharacter.gd" id="1_y42u0"]
 [ext_resource type="Texture2D" uid="uid://bx33fkmn8dbwc" path="res://Sprites/linkAlttpBaseSprites.png" id="2_hoo8x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4pqxa"]
+size = Vector2(16, 21)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2aie3"]
 
@@ -101,6 +104,12 @@ anim = NodePath("AnimationPlayer")
 texture = ExtResource("2_hoo8x")
 offset = Vector2(0, -2)
 hframes = 11
+
+[node name="CameAreaDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameAreaDetection"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_4pqxa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2aie3")

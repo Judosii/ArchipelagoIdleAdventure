@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://b24xpjqraoa4j"]
+[gd_scene load_steps=14 format=4 uid="uid://b24xpjqraoa4j"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/WorldTemplateScript.gd" id="1_bofio"]
 [ext_resource type="Texture2D" uid="uid://d01ogaasscuk0" path="res://Sprites/legend-of-zelda-a-link-to-the-past-light-world-snes-map.webp" id="1_mwyim"]
@@ -6,15 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://ikexw4aiodf8" path="res://Sprites/test.png" id="3_57iqq"]
 [ext_resource type="PackedScene" uid="uid://cbtkdpixloypg" path="res://Scripts/Engine/Camera/AreaForCamera.tscn" id="3_r201e"]
 [ext_resource type="PackedScene" uid="uid://ctuh5g7lbjx6l" path="res://Scenes/LevelElements/Location.tscn" id="4_v0e1c"]
+[ext_resource type="PackedScene" uid="uid://fo4kirhkuxj7" path="res://Scripts/Engine/Camera/AreaBasedCamera.tscn" id="6_ecwe3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbv7m"]
-size = Vector2(500, 336)
+size = Vector2(512, 512)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgjsy"]
-size = Vector2(512, 940)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vq7ji"]
+size = Vector2(1024, 1024)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gt8cn"]
-size = Vector2(1000, 1176)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7fe8"]
+size = Vector2(1024, 512)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_vl5ad"]
 vertices = PackedVector2Array(1918, -2046, 1918, 2046, 178, 866, 178, 670, -2174, -2046, 162, 654, 162, 670, 146, 654, 146, 638, 130, 638, 130, 622, -18, 622, -18, 638, -34, 638, -34, 654, -50, 654, -50, 718, -66, 718, -66, 734, -194, 734, -194, 750, -210, 750, -210, 766, -226, 766, -226, 782, -258, 782, -258, 798, -274, 798, -274, 814, -290, 814, -290, 866, -274, 866, -274, 882, -2174, 2046, -258, 882, -258, 898, -222, 898, -222, 882, -206, 882, -206, 846, -254, 846, -254, 818, -222, 818, -222, 802, -206, 802, -178, 846, -206, 786, -190, 786, -62, 846, -190, 770, -62, 770, -18, 846, -62, 754, -46, 754, -46, 738, -30, 738, -30, 722, -14, 722, 142, 846, -14, 658, 126, 658, 126, 674, 142, 674, -18, 882, -2, 882, -2, 898, -62, 882, -78, 898, -178, 882, -162, 882, -162, 898, -78, 882, 146, 898, 146, 882, 162, 882, 162, 866)
@@ -48,23 +49,256 @@ texture = ExtResource("1_mwyim")
 [node name="AreaParent" type="Node2D" parent="MainArea"]
 
 [node name="Link\'sHouse" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
-position = Vector2(116, 836)
+position = Vector2(128, 768)
 
 [node name="CollisionShape2D" parent="MainArea/AreaParent/Link\'sHouse" index="0"]
 shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
 
-[node name="Bridge" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
-position = Vector2(622, 856)
+[node name="Link\'sWoods" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-384, 768)
 
-[node name="CollisionShape2D" parent="MainArea/AreaParent/Bridge" index="0"]
-position = Vector2(0, -302)
-shape = SubResource("RectangleShape2D_wgjsy")
+[node name="CollisionShape2D" parent="MainArea/AreaParent/Link\'sWoods" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
 
-[node name="HyruleCastle" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
-position = Vector2(-134, 80)
+[node name="SouthPillars" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(128, 1280)
 
-[node name="CollisionShape2D" parent="MainArea/AreaParent/HyruleCastle" index="0"]
-shape = SubResource("RectangleShape2D_gt8cn")
+[node name="CollisionShape2D" parent="MainArea/AreaParent/SouthPillars" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="SouthPonds" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-384, 1280)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/SouthPonds" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="SouthToLake" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(128, 1792)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/SouthToLake" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="SouthToDesert" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-384, 1792)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/SouthToDesert" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="KeyMasterArea" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-896, 1792)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/KeyMasterArea" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="Desert" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-1664, 1536)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/Desert" index="0"]
+shape = SubResource("RectangleShape2D_vq7ji")
+metadata/_edit_lock_ = true
+
+[node name="KakarikoSouth" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-1664, 768)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/KakarikoSouth" index="0"]
+shape = SubResource("RectangleShape2D_g7fe8")
+metadata/_edit_lock_ = true
+
+[node name="Kakariko" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-1664, 0)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/Kakariko" index="0"]
+shape = SubResource("RectangleShape2D_vq7ji")
+metadata/_edit_lock_ = true
+
+[node name="FluteStump" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-896, 768)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/FluteStump" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="BelowSouthKak" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-896, 1280)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/BelowSouthKak" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="WestCastleWoods" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-896, -256)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/WestCastleWoods" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="SmithyArea" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-896, 256)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/SmithyArea" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="ChurchPond" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-896, -768)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/ChurchPond" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="KakWizard" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-1408, -768)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/KakWizard" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="KakWoodsEntrance" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-1920, -768)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/KakWoodsEntrance" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="LostWoods" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-1664, -1536)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/LostWoods" index="0"]
+shape = SubResource("RectangleShape2D_vq7ji")
+metadata/_edit_lock_ = true
+
+[node name="LumberJacks" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-896, -1792)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/LumberJacks" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="SouthLumberJacks" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-896, -1280)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/SouthLumberJacks" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="ChurchYard" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-384, -768)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/ChurchYard" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="GraveYard" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(128, -768)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/GraveYard" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="CastleYard" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(-128, 0)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/CastleYard" index="0"]
+shape = SubResource("RectangleShape2D_vq7ji")
+metadata/_edit_lock_ = true
+
+[node name="LakeHylia" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(896, 1536)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/LakeHylia" index="0"]
+shape = SubResource("RectangleShape2D_vq7ji")
+metadata/_edit_lock_ = true
+
+[node name="HyliaBridge" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(640, 768)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/HyliaBridge" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="OctoFields" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(640, 256)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/OctoFields" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="EasternYard" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(1408, 0)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/EasternYard" index="0"]
+shape = SubResource("RectangleShape2D_vq7ji")
+metadata/_edit_lock_ = true
+
+[node name="SouthSahasrala" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(1152, 768)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/SouthSahasrala" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="EasternCave" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(1664, 768)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/EasternCave" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="IceCaveEntrance" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(1664, 1280)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/IceCaveEntrance" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="SouthIceCave" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(1664, 1792)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/SouthIceCave" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="WestGraveYard" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(640, -768)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/WestGraveYard" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="BridgeFields" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(640, -256)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/BridgeFields" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="PotionShop" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(1152, -768)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/PotionShop" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="WestPotionShop" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(1664, -768)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/WestPotionShop" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
+
+[node name="ZoraRiverEntrance" parent="MainArea/AreaParent" instance=ExtResource("3_r201e")]
+position = Vector2(1664, -1280)
+
+[node name="CollisionShape2D" parent="MainArea/AreaParent/ZoraRiverEntrance" index="0"]
+shape = SubResource("RectangleShape2D_cbv7m")
+metadata/_edit_lock_ = true
 
 [node name="LocationParent" type="Node2D" parent="MainArea"]
 
@@ -85,9 +319,10 @@ position = Vector2(621, 904)
 
 [node name="CharacterBody2D" parent="." node_paths=PackedStringArray("list") instance=ExtResource("2_ffl2e")]
 position = Vector2(0, 800)
+speed = 100
 list = [NodePath("../MainArea/LocationParent/Location"), NodePath("../MainArea/LocationParent/Location2"), NodePath("../MainArea/LocationParent/Location3"), NodePath("../MainArea/LocationParent/Location4"), NodePath("../MainArea/LocationParent/Location5")]
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="CameraAreaBased" parent="CharacterBody2D" instance=ExtResource("6_ecwe3")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
@@ -99,5 +334,38 @@ tile_map_data = PackedByteArray("AAD//zUAAAAAAAAAAAAAADUAAAAAAAAAAAABADUAAAAAAAA
 tile_set = SubResource("TileSet_bnnb0")
 
 [editable path="MainArea/AreaParent/Link\'sHouse"]
-[editable path="MainArea/AreaParent/Bridge"]
-[editable path="MainArea/AreaParent/HyruleCastle"]
+[editable path="MainArea/AreaParent/Link\'sWoods"]
+[editable path="MainArea/AreaParent/SouthPillars"]
+[editable path="MainArea/AreaParent/SouthPonds"]
+[editable path="MainArea/AreaParent/SouthToLake"]
+[editable path="MainArea/AreaParent/SouthToDesert"]
+[editable path="MainArea/AreaParent/KeyMasterArea"]
+[editable path="MainArea/AreaParent/Desert"]
+[editable path="MainArea/AreaParent/KakarikoSouth"]
+[editable path="MainArea/AreaParent/Kakariko"]
+[editable path="MainArea/AreaParent/FluteStump"]
+[editable path="MainArea/AreaParent/BelowSouthKak"]
+[editable path="MainArea/AreaParent/WestCastleWoods"]
+[editable path="MainArea/AreaParent/SmithyArea"]
+[editable path="MainArea/AreaParent/ChurchPond"]
+[editable path="MainArea/AreaParent/KakWizard"]
+[editable path="MainArea/AreaParent/KakWoodsEntrance"]
+[editable path="MainArea/AreaParent/LostWoods"]
+[editable path="MainArea/AreaParent/LumberJacks"]
+[editable path="MainArea/AreaParent/SouthLumberJacks"]
+[editable path="MainArea/AreaParent/ChurchYard"]
+[editable path="MainArea/AreaParent/GraveYard"]
+[editable path="MainArea/AreaParent/CastleYard"]
+[editable path="MainArea/AreaParent/LakeHylia"]
+[editable path="MainArea/AreaParent/HyliaBridge"]
+[editable path="MainArea/AreaParent/OctoFields"]
+[editable path="MainArea/AreaParent/EasternYard"]
+[editable path="MainArea/AreaParent/SouthSahasrala"]
+[editable path="MainArea/AreaParent/EasternCave"]
+[editable path="MainArea/AreaParent/IceCaveEntrance"]
+[editable path="MainArea/AreaParent/SouthIceCave"]
+[editable path="MainArea/AreaParent/WestGraveYard"]
+[editable path="MainArea/AreaParent/BridgeFields"]
+[editable path="MainArea/AreaParent/PotionShop"]
+[editable path="MainArea/AreaParent/WestPotionShop"]
+[editable path="MainArea/AreaParent/ZoraRiverEntrance"]

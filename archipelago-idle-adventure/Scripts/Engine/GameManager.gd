@@ -16,4 +16,5 @@ func CameraScrollTransition(area: Area2D):
 	SetCameraBounds(area)
 
 func SetCameraBounds(area: Area2D):
+	print("setting camera bounds")
 	mainCam.SetBoundsFromArea(area)

@@ -16,6 +16,11 @@ var accel = 7
 
 func _physics_process(delta):
 	if active:
+		MoveCode(delta)
+	else:
+		anim.play("Idle")
+
+func MoveCode(delta : float):
 		var direction = Vector3()
 		
 		#nav.target_position = get_global_mouse_position()
@@ -27,12 +32,11 @@ func _physics_process(delta):
 		velocity = velocity.lerp(direction * speed, accel * delta)
 		move_and_slide()
 		moving.emit()
-		if position.distance_squared_to(list[i].global_position) < 10 && i > 4:
+		if position.distance_squared_to(list[i].global_position) < 10:
 			i +=1
-		else: 
+		if i > list.size()-1:
 			active = false
-	else:
-		anim.play("Idle")
+			return
 
 func _on_moving() -> void:
 	if velocity != Vector2.ZERO && anim.current_animation == "Walk":

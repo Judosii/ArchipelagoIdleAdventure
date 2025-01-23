@@ -12,7 +12,11 @@ var i: int = 0
 @export_category("Nodes")
 @export var nav : NavigationAgent2D
 @export var anim : AnimationPlayer
+@export var locationParent: Node2D
 var accel = 7
+
+func _ready() -> void:
+	list.append_array(locationParent.get_children())
 
 func _physics_process(delta):
 	if active:

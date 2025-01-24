@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdrcmni30u2wd"
-path="res://.godot/imported/lightworld_large.png-cc08316ddca1f03d763784b3e6f8c7ae.ctex"
+uid="uid://ii8hb5n3ign0"
+path="res://.godot/imported/Zelda3DarkOverworld.png-b7bd3a9de6dd07caf658e2d18998f5b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/lightworld_large.png"
-dest_files=["res://.godot/imported/lightworld_large.png-cc08316ddca1f03d763784b3e6f8c7ae.ctex"]
+source_file="res://Sprites/Maps/Zelda3DarkOverworld.png"
+dest_files=["res://.godot/imported/Zelda3DarkOverworld.png-b7bd3a9de6dd07caf658e2d18998f5b9.ctex"]
 
 [params]
 

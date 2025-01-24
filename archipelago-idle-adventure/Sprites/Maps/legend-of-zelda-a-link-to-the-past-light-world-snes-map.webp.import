@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjrbplmni8xvv"
-path="res://.godot/imported/hyrule_light.jpg-b361d9d49b1132a07251718ecfd43d88.ctex"
+uid="uid://d01ogaasscuk0"
+path="res://.godot/imported/legend-of-zelda-a-link-to-the-past-light-world-snes-map.webp-afbcae13b2d65d838583143625db7536.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/hyrule_light.jpg"
-dest_files=["res://.godot/imported/hyrule_light.jpg-b361d9d49b1132a07251718ecfd43d88.ctex"]
+source_file="res://Sprites/Maps/legend-of-zelda-a-link-to-the-past-light-world-snes-map.webp"
+dest_files=["res://.godot/imported/legend-of-zelda-a-link-to-the-past-light-world-snes-map.webp-afbcae13b2d65d838583143625db7536.ctex"]
 
 [params]
 

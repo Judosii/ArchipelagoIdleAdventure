@@ -30,7 +30,8 @@ func MoveCode(delta : float):
 		#nav.target_position = get_global_mouse_position()
 		nav.target_position = list[i].global_position
 		
-		direction = nav.get_next_path_position() - global_position
+		direction = SnapDir(nav.get_next_path_position(), global_position)
+		#direction = nav.get_next_path_position() - global_position
 		direction = direction.normalized()
 		
 		velocity = velocity.lerp(direction * speed, accel * delta)
@@ -41,6 +42,15 @@ func MoveCode(delta : float):
 		if i > list.size()-1:
 			active = false
 			return
+
+func SnapDir(nextPathPos:Vector2, curPos:Vector2) -> Vector2:
+	var v : Vector2 = nextPathPos - curPos
+	var snappedDir : Vector2
+	
+	var angle = v.normalized().angle()
+	var snapped_angle = round(angle / (PI / 4)) * (PI / 4)
+	snappedDir = Vector2(cos(snapped_angle), sin(snapped_angle))
+	return snappedDir
 
 func _on_moving() -> void:
 	if velocity != Vector2.ZERO && anim.current_animation == "Walk":

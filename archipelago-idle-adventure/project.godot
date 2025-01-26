@@ -27,7 +27,8 @@ window/stretch/mode="viewport"
 
 [global_group]
 
-navMeshObstacle="obstacle for navmesh2D navigation"
+navMeshObstacleUpper="obstacle for navmesh2D navigation"
+navMeshObstacleLower=""
 
 [rendering]
 

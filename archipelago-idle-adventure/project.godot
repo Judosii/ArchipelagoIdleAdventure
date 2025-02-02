@@ -21,8 +21,8 @@ GAME_MANAGER="*res://Scripts/Engine/GameManager.tscn"
 
 [display]
 
-window/size/viewport_width=256
-window/size/viewport_height=224
+window/size/viewport_width=252
+window/size/viewport_height=252
 window/stretch/mode="viewport"
 
 [global_group]
